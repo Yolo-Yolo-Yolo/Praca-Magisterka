@@ -9,42 +9,38 @@ const Footer = () => {
         <MDBRow>
           <MDBCol md="3">
             <Card body>
-              <CardTitle><h5>Special Title Treatment</h5></CardTitle>
-              <CardText>
-                With supporting text below as a natural lead-in to additional
-                content.
-              </CardText>
-              <Button>Go somewhere</Button>
+              <CardTitle>
+                <h5>TEST</h5>
+              </CardTitle>
+              <CardText>TEKST</CardText>
+              <Button>Więcej</Button>
             </Card>
           </MDBCol>
           <MDBCol md="3">
-          <Card body>
-              <CardTitle><h5>Special Title Treatment</h5></CardTitle>
-              <CardText>
-                With supporting text below as a natural lead-in to additional
-                content.
-              </CardText>
-              <Button>Go somewhere</Button>
+            <Card body>
+              <CardTitle>
+                <h5>TEST</h5>
+              </CardTitle>
+              <CardText>TEKST</CardText>
+              <Button>Więcej</Button>
             </Card>
           </MDBCol>
           <MDBCol md="3">
-          <Card body>
-              <CardTitle><h5>Special Title Treatment</h5></CardTitle>
-              <CardText>
-                With supporting text below as a natural lead-in to additional
-                content.
-              </CardText>
-              <Button>Go somewhere</Button>
+            <Card body>
+              <CardTitle>
+                <h5>TEST</h5>
+              </CardTitle>
+              <CardText>TEKST</CardText>
+              <Button>Więcej</Button>
             </Card>
           </MDBCol>
           <MDBCol md="3">
-          <Card body>
-              <CardTitle><h5>Special Title Treatment</h5></CardTitle>
-              <CardText>
-                With supporting text below as a natural lead-in to additional
-                content.
-              </CardText>
-              <Button>Go somewhere</Button>
+            <Card body>
+              <CardTitle>
+                <h5>TEST</h5>
+              </CardTitle>
+              <CardText>TEKST</CardText>
+              <Button>Więcej</Button>
             </Card>
           </MDBCol>
         </MDBRow>
