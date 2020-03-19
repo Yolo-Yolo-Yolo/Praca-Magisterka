@@ -11,7 +11,7 @@ const User = require("../models/User");
 // @desc Register new user
 // @access public
 router.post("/", (req, res) => {
-  const { email, password, album, imie, nazwisko, telefon } = req.body;
+  const { email, password, album, imie, nazwisko, telefon, isAdmin } = req.body;
 
   // Simple validation
   if (!email || !password || !album || !imie || !nazwisko || !telefon) {
@@ -29,7 +29,8 @@ router.post("/", (req, res) => {
       album,
       imie,
       nazwisko,
-      telefon
+      telefon,
+      isAdmin
     });
     // Create salt & hash password
     bcrypt.genSalt(10, (err, salt) => {
@@ -51,7 +52,8 @@ router.post("/", (req, res) => {
                   album: user.album,
                   imie: user.imie,
                   nazwisko: user.nazwisko,
-                  telefon: user.telefon
+                  telefon: user.telefon,
+                  isAdmin: false
                 }
               });
             }
