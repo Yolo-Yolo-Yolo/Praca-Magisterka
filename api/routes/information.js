@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const auth = require('../middleware/auth')
 
 //Information Model
 const Information = require("../models/Information");
@@ -15,8 +16,8 @@ router.get("/", (req, res) => {
 
 // @route POST information
 // @desc Create an information
-// @access public
-router.post("/", (req, res) => {
+// @access private
+router.post("/", auth, (req, res) => {
   const newInformation = new Information({
     title: req.body.title,
     info: req.body.info
@@ -26,9 +27,9 @@ router.post("/", (req, res) => {
 
 // @route DELETE information
 // @desc Delete a information
-// @access public
+// @access private
 router
-  .delete("/:id", (req, res) => {
+  .delete("/:id", auth, (req, res) => {
     Information.findById(req.params.id).then(Information =>
       Information.remove().then(() => res.json({ success: true }))
     )

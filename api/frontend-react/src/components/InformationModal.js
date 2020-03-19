@@ -11,12 +11,17 @@ import {
 } from "reactstrap";
 import { connect } from "react-redux";
 import { addInformation } from "../actions/InformationActions";
+import PropTypes from "prop-types";
 
 class InformationModal extends Component {
   state = {
     modal: false,
     title: "",
     info: ""
+  };
+
+  static propTypes = {
+    isAuthenticated: PropTypes.bool
   };
 
   toggle = () => {
@@ -46,13 +51,14 @@ class InformationModal extends Component {
   render() {
     return (
       <div>
-        <Button
+        { this.props.isAuthenticated ? <Button
           color="dark"
           style={{ marginBottom: "2rem" }}
           onClick={this.toggle}
         >
           Dodaj Ogłoszenie
-        </Button>
+        </Button> : ''}
+        
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>Dodawanie Ogłoszenia</ModalHeader>
           <ModalBody>
@@ -66,8 +72,8 @@ class InformationModal extends Component {
                   placeholder="Dodaj tytuł"
                   onChange={this.onChange}
                 ></Input>
-                </FormGroup>
-                <FormGroup>
+              </FormGroup>
+              <FormGroup>
                 <Label for="item">Treść ogłoszenia:</Label>
                 <Input
                   type="textarea"
@@ -89,7 +95,8 @@ class InformationModal extends Component {
 }
 
 const mapStatetoProps = state => ({
-  item: state.item
+  item: state.item,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapStatetoProps, { addInformation })(InformationModal);

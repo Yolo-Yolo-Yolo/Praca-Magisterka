@@ -5,6 +5,7 @@ const config = require('config');
 
 const information = require('./routes/information');
 const users = require('./routes/users');
+const auth = require('./routes/auth');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -22,6 +23,7 @@ mongoose
 //Use routes
 app.use('/information',information);
 app.use('/users', users);
+app.use('/auth', auth);
 
 
 
