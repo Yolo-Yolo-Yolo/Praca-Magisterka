@@ -13,7 +13,7 @@ import InformationModal from "../InformationModal";
 import Footer from "../Footer";
 import Copyright from "../Copyright";
 import NavBar from "../NavigationBars/NavBar";
-const MainPage = props => {
+const StartPage = props => {
   return (
     <div>
         <NavBar />
@@ -53,4 +53,4 @@ const MainPage = props => {
   );
 };
 
-export default MainPage;
+export default StartPage;

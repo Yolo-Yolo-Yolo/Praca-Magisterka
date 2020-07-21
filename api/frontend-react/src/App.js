@@ -8,7 +8,7 @@ import {Switch, Route, BrowserRouter as Router} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-//import AppSidebar from "./components/AppSidebar";
+import Home from "./components/Pages/Home";
 
 
 class App extends Component {
@@ -22,6 +22,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path='/' component={StartPage} />
+            <Route exact path='/home' component={Home} />
           </Switch>
         </Router>
         </div>
