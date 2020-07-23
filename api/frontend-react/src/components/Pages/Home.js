@@ -69,8 +69,6 @@ const styles = theme => ({
 
 
 class Home extends Component {
-
-
     render() {
         const {classes} = this.props;
         return (

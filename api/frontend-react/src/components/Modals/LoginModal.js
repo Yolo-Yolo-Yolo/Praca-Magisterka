@@ -48,7 +48,6 @@ class LoginModal extends Component {
         }
     }
   }
-
   toggle = () => {
     //Clear errors
     this.props.clearErrors();

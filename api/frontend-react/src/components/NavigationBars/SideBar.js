@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import ListSubheader from '@material-ui/core/ListSubheader';
 import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
@@ -16,7 +17,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -40,6 +40,9 @@ const styles = theme => ({
   },
   menuButton: {
     marginRight: 12,
+  },
+  LogoutButton: {
+    marginRight: theme.spacing(2),
   },
   hide: {
     display: 'none',
@@ -116,7 +119,7 @@ class SideBar extends Component {
                 >
                     <MenuIcon />
                 </IconButton>
-                <Typography variant="h6" noWrap>
+                <Typography variant="h6"  noWrap >
                     E-DZIEKANAT WIMIR
                 </Typography>
                 </Toolbar>
@@ -140,23 +143,59 @@ class SideBar extends Component {
                 </IconButton>
                 </div>
                 <Divider />
-                <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                    <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                    <ListItemText primary={text} />
+                <List subheader={
+                <ListSubheader component="div" id="nested-list-subheader">
+                <strong>ADMIN</strong>
+                </ListSubheader>
+                 }>
+                    <ListItem button component="a" href="/admin/panel">
+                    <ListItemIcon><InboxIcon /></ListItemIcon>
+                    <ListItemText primary="Panel Admina" />
                     </ListItem>
-                ))}
+                    <ListItem button component="a" href="/admin/rezerwacje">
+                    <ListItemIcon><InboxIcon /></ListItemIcon>
+                    <ListItemText primary="Wszystkie Rezerwacje" />
+                    </ListItem>
+                    <ListItem button component="a" href="/admin/ogloszenia">
+                    <ListItemIcon><InboxIcon /></ListItemIcon>
+                    <ListItemText primary="Ogłoszenia" />
+                    </ListItem>
                 </List>
                 <Divider />
-                <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                    <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                    <ListItemText primary={text} />
+                <List subheader={
+                <ListSubheader component="div" id="nested-list-subheader">
+                <strong>USER</strong>
+                </ListSubheader>
+                 }>
+                    <ListItem button component="a" href="/rezerwacja">
+                    <ListItemIcon><InboxIcon /></ListItemIcon>
+                    <ListItemText primary="Rezerwacja Wizyty" />
                     </ListItem>
-                ))}
+                    <ListItem button component="a" href="/moje_rezerwacje">
+                    <ListItemIcon><InboxIcon /></ListItemIcon>
+                    <ListItemText primary="Moje Wizyty" />
+                    </ListItem>
                 </List>
+                <Divider />
+                <List subheader={
+                <ListSubheader component="div" id="nested-list-subheader">
+                <strong>ALL</strong>
+                </ListSubheader>
+                 }>
+                    <ListItem button component="a" href="/home">
+                    <ListItemIcon><InboxIcon /></ListItemIcon>
+                    <ListItemText primary="Panel Główny" />
+                    </ListItem>
+                    <ListItem button component="a" href="/faq">
+                    <ListItemIcon><InboxIcon /></ListItemIcon>
+                    <ListItemText primary="FAQ" />
+                    </ListItem>
+                    <ListItem button component="a" href="/">
+                    <ListItemIcon><InboxIcon /></ListItemIcon>
+                    <ListItemText primary="Wyloguj" />
+                    </ListItem>
+                </List>
+                
             </Drawer> 
             </div> 
         );
