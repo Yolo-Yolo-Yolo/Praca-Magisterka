@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withStyles } from '@material-ui/core/styles';
 import SideBar from "../NavigationBars/SideBar";
 import Copyright from "../Copyright";
-import HomeBody from '../Body/HomeBody';
+import InformationBody from '../Body/InformationBody';
 
 const drawerWidth = 240;
 
@@ -75,7 +75,7 @@ const styles = theme => ({
   });
 
 
-class Home extends Component {
+class AdminInformations extends Component {
     render() {
         const {classes} = this.props;
         return (
@@ -83,13 +83,13 @@ class Home extends Component {
                 <SideBar />
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
-                    <HomeBody />
+                    <InformationBody />
                     <main className={classes.contentCopyright}>
                     <Copyright/>  
-                    </main>
+                    </main>   
                 </main>
             </div>
         );
     }
 }
-export default withStyles(styles)(Home)
+export default withStyles(styles)(AdminInformations)

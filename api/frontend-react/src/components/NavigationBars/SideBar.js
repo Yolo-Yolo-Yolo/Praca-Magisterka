@@ -4,19 +4,14 @@ import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
+import SideBarList from './SideBarList';
+
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -142,60 +137,7 @@ class SideBar extends Component {
                     {classes.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                 </IconButton>
                 </div>
-                <Divider />
-                <List subheader={
-                <ListSubheader component="div" id="nested-list-subheader">
-                <strong>ADMIN</strong>
-                </ListSubheader>
-                 }>
-                    <ListItem button component="a" href="/admin/panel">
-                    <ListItemIcon><InboxIcon /></ListItemIcon>
-                    <ListItemText primary="Panel Admina" />
-                    </ListItem>
-                    <ListItem button component="a" href="/admin/rezerwacje">
-                    <ListItemIcon><InboxIcon /></ListItemIcon>
-                    <ListItemText primary="Wszystkie Rezerwacje" />
-                    </ListItem>
-                    <ListItem button component="a" href="/admin/ogloszenia">
-                    <ListItemIcon><InboxIcon /></ListItemIcon>
-                    <ListItemText primary="Ogłoszenia" />
-                    </ListItem>
-                </List>
-                <Divider />
-                <List subheader={
-                <ListSubheader component="div" id="nested-list-subheader">
-                <strong>USER</strong>
-                </ListSubheader>
-                 }>
-                    <ListItem button component="a" href="/rezerwacja">
-                    <ListItemIcon><InboxIcon /></ListItemIcon>
-                    <ListItemText primary="Rezerwacja Wizyty" />
-                    </ListItem>
-                    <ListItem button component="a" href="/moje_rezerwacje">
-                    <ListItemIcon><InboxIcon /></ListItemIcon>
-                    <ListItemText primary="Moje Wizyty" />
-                    </ListItem>
-                </List>
-                <Divider />
-                <List subheader={
-                <ListSubheader component="div" id="nested-list-subheader">
-                <strong>ALL</strong>
-                </ListSubheader>
-                 }>
-                    <ListItem button component="a" href="/home">
-                    <ListItemIcon><InboxIcon /></ListItemIcon>
-                    <ListItemText primary="Panel Główny" />
-                    </ListItem>
-                    <ListItem button component="a" href="/faq">
-                    <ListItemIcon><InboxIcon /></ListItemIcon>
-                    <ListItemText primary="FAQ" />
-                    </ListItem>
-                    <ListItem button component="a" href="/">
-                    <ListItemIcon><InboxIcon /></ListItemIcon>
-                    <ListItemText primary="Wyloguj" />
-                    </ListItem>
-                </List>
-                
+                <SideBarList />  
             </Drawer> 
             </div> 
         );

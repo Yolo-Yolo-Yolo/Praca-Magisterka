@@ -22,7 +22,7 @@ class LoginModal extends Component {
     email: "",
     password: "",
     imie: "",
-    msg: null
+    msg: null,
   };
   static propTypes = {
     isAuthenticated: PropTypes.bool,
