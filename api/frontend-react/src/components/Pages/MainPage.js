@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Home from './Home';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Loading from "./LoadingPage";
+import LoadingPage from "./LoadingPage";
 class MainPage extends Component {
     
     static propTypes = {
@@ -13,7 +13,7 @@ class MainPage extends Component {
         const { isAuthenticated } = this.props.auth;
         return (
             <div>
-                {isAuthenticated ? <Home /> : <Loading />}
+                {isAuthenticated ? <Home /> : <LoadingPage />}
             </div>
         );
     }

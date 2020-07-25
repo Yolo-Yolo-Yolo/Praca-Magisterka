@@ -10,10 +10,10 @@ class AdminInformation extends Component {
       };
 
     render() {
-        const { isAuthenticated } = this.props.auth;
+        const { user, isAuthenticated } = this.props.auth;
         return (
             <div>
-                {isAuthenticated ? <AdminInformations /> : <Loading /> }
+                {isAuthenticated&&user.isAdmin ? <AdminInformations /> : <Loading /> }
             </div>
         );
     }
