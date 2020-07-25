@@ -41,8 +41,11 @@ router.post("/", (req, res) => {
                 user: {
                   id: user.id,
                   email: user.email,
+                  album: user.album,
                   imie: user.imie,
-                  nazwisko: user.nazwisko
+                  nazwisko: user.nazwisko,
+                  telefon: user.telefon,
+                  isAdmin: user.isAdmin
                 }
               });
             }

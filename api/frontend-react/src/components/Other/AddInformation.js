@@ -18,7 +18,8 @@ class InformationModal extends Component {
   };
 
   static propTypes = {
-    isAuthenticated: PropTypes.bool
+    isAuthenticated: PropTypes.bool,
+    auth: PropTypes.object.isRequired
   };
 
   toggle = () => {
@@ -77,6 +78,7 @@ class InformationModal extends Component {
 }
 
 const mapStatetoProps = state => ({
+  auth: state.auth,
   item: state.item,
   isAuthenticated: state.auth.isAuthenticated
 });

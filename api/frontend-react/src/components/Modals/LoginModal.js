@@ -15,6 +15,7 @@ import PropTypes from "prop-types";
 import { login } from "../../actions/authActions";
 import { clearErrors } from "../../actions/errorActions";
 import Button from '@material-ui/core/Button';
+import { Redirect } from "react-router-dom";
 
 class LoginModal extends Component {
   state = {
@@ -30,8 +31,8 @@ class LoginModal extends Component {
     login: PropTypes.func.isRequired,
     clearErrors: PropTypes.func.isRequired
   };
-
   componentDidUpdate(prevProps) {
+
     const { error, isAuthenticated } = this.props;
     if (error !== prevProps.error) {
       //Check for login error
@@ -74,6 +75,7 @@ class LoginModal extends Component {
   render() {
     return (
       <div>
+        {this.props.isAuthenticated ? <Redirect to="/home" /> :' '}
         <Button color="inherit" onClick={this.toggle}>LOGOWANIE</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle} style={{color : "white", backgroundColor : "#3f51b5"}}>Logowanie</ModalHeader>

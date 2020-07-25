@@ -1,15 +1,13 @@
 import React, { Component } from "react";
-import StartPage from "./components/Pages/StartPage";
 import { Provider } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/authActions";
 import {Switch, Route, BrowserRouter as Router} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-
-import Home from "./components/Pages/Home";
-import AdminInformations from "./components/Pages/AdminInformations";
-
+import MainPage from "./components/Pages/MainPage";
+import AdminInformation from "./components/Pages/AdminInformation";
+import StartPage from "./components/Pages/StartPage";
 class App extends Component {
   componentDidMount() {
     store.dispatch(loadUser());
@@ -21,9 +19,8 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path='/' component={StartPage} />
-            <Route exact path='/home' component={Home} />
-            <Route exact path='/admin/ogloszenia' component={AdminInformations} />
-
+            <Route exact path='/Home' component={MainPage} />
+            <Route exact path='/admin/ogloszenia' component={AdminInformation} />
           </Switch>
         </Router>
         </div>

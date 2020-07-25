@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logout } from "../../actions/authActions";
 import ListSubheader from '@material-ui/core/ListSubheader';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -12,19 +15,17 @@ import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import LiveHelpRoundedIcon from '@material-ui/icons/LiveHelpRounded';
 import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { logout } from "../../actions/authActions";
-
 
 
 class SideBarList extends Component {
     static propTypes = {
+        auth: PropTypes.object.isRequired,
         logout: PropTypes.func.isRequired
       };
 
     render() {
-        return (
+        const { user } = this.props.auth;
+        const adminList = (
             <div>
             <Divider />
             <List subheader={
@@ -79,9 +80,57 @@ class SideBarList extends Component {
                 <ListItemText primary="Wyloguj" />
                 </ListItem>
             </List>
+            </div>
+        );
+
+        const userList = (
+            <div>
+            <List subheader={
+                <ListSubheader component="div" id="nested-list-subheader">
+                <strong>USER</strong>
+                </ListSubheader>
+                 }>
+                    <ListItem button component="a" href="/rezerwacja">
+                    <ListItemIcon><AddRoundedIcon /></ListItemIcon>
+                    <ListItemText primary="Nowa Rezerwacja" />
+                    </ListItem>
+                    <ListItem button component="a" href="/moje_rezerwacje">
+                    <ListItemIcon><EventSeatRoundedIcon /></ListItemIcon>
+                    <ListItemText primary="Moje Wizyty" />
+                    </ListItem>
+                </List>
+                <Divider />
+                <List subheader={
+                <ListSubheader component="div" id="nested-list-subheader">
+                <strong>ALL</strong>
+                </ListSubheader>
+                 }>
+                    <ListItem button component="a" href="/home">
+                    <ListItemIcon><HomeRoundedIcon /></ListItemIcon>
+                    <ListItemText primary="Panel Główny" />
+                    </ListItem>
+                    <ListItem button component="a" href="/faq">
+                    <ListItemIcon><LiveHelpRoundedIcon /></ListItemIcon>
+                    <ListItemText primary="FAQ" />
+                    </ListItem>
+                    <ListItem button component="a" href="/" onClick={this.props.logout}>
+                    <ListItemIcon><ExitToAppRoundedIcon /></ListItemIcon>
+                    <ListItemText primary="Wyloguj" />
+                    </ListItem>
+                </List>
+                </div>
+        )
+        return (
+            <div>
+                 { user.isAdmin ? adminList : userList}
             </div>    
         );
     }
 }
 
-export default connect(null, { logout })(SideBarList)
+
+const mapStatetoProps = state => ({
+    auth: state.auth
+  });
+
+export default connect(mapStatetoProps, { logout })(SideBarList)

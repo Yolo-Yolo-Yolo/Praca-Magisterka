@@ -30,7 +30,7 @@ router.post("/", (req, res) => {
       imie,
       nazwisko,
       telefon,
-      isAdmin
+      isAdmin : false
     });
     // Create salt & hash password
     bcrypt.genSalt(10, (err, salt) => {

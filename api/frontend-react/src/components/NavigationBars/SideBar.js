@@ -143,4 +143,5 @@ class SideBar extends Component {
         );
     }
 }
+
 export default withStyles(styles)(SideBar)

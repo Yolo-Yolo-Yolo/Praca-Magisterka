@@ -3,6 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import UserInfo from '../Other/UserInfo';
 
 const styles = theme => ({
     root: {
@@ -17,7 +18,7 @@ const styles = theme => ({
 
 
 class HomeBody extends Component {
-
+    
     render() {
         const {classes} = this.props;
 
@@ -26,7 +27,7 @@ class HomeBody extends Component {
                     <Container maxWidth>
                         <Grid container spacing={4} style={{marginTop:"1rem"}}>
                         <Grid item xs={12}>
-                        <Paper className={classes.paper}>xs=12</Paper>
+        <Paper className={classes.paper}><UserInfo /></Paper>
                         </Grid>
                         <Grid item xs={6}>
                         <Paper className={classes.paper}>xs=6</Paper>
