@@ -40,7 +40,7 @@ class InformationBody extends Component {
                             </Paper>
                         </Grid>     
                         <Grid item xs={6}>
-                            <Paper className={classes.paper}>
+                            <Paper className={classes.paper} style ={{marginBottom:"1rem"}}>
                                 <AddInformation />
                             </Paper>
                         </Grid>

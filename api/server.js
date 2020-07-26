@@ -1,12 +1,13 @@
+//Loading additional used libraries 
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const config = require('config');
-
+//Loading routes
 const information = require('./routes/information');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
-
+//Loading app
 const app = express();
 const port = process.env.PORT || 5000;
 

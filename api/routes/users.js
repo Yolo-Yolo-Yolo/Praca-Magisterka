@@ -3,9 +3,21 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const config = require("config");
 const jwt = require("jsonwebtoken");
+const auth = require('../middleware/auth');
 
 //User Model
 const User = require("../models/User");
+
+
+// @route GET users
+// @desc get all users
+// @access public
+router.get("/getall", auth, (req, res) => {
+  User.find()
+    .select('-password')
+    .then(items => res.json(items));
+});
+
 
 // @route POST users
 // @desc Register new user
