@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import LoginModal from "../Modals/LoginModal";
 import RegisterModal from "../Modals/RegisterModal";
-
+import Wimir from '../../assets/img/wimir.png'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,7 +27,7 @@ export default function ButtonAppBar() {
       <AppBar position="static" color="primary">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            E-DZIEKANAT WIMIR
+          <img src={Wimir} alt='Wydział Inżynierii Mechanicznej i Robotyki' width="100" height="30" />  E-DZIEKANAT
           </Typography>
           <RegisterModal />
           <LoginModal />
