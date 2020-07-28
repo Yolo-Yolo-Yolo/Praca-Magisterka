@@ -33,7 +33,7 @@ class HomeBody extends Component {
                                 </h1></Paper>
                         </Grid>
                         <Grid item xs={12}>
-                        <Paper className={classes.paper}>
+                        <Paper className={classes.paper} style={{marginBottom:"1rem"}}>
                             <Accordions />
                         </Paper>
                         </Grid>

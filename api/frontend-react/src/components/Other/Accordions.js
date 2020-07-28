@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   headingContent: {
       color: "black",
-      backgroundColor: "grey",
+      backgroundColor: "#757ce8",
   }
 }));
 
@@ -31,7 +31,6 @@ export default function SimpleAccordion() {
           aria-controls="panel1a-content"
           id="panel1a-header"
           className={classes.headingContent}
-          square={false}
         >
           <Typography className={classes.heading}><b>Co to są Ogłoszenia?</b></Typography>
         </AccordionSummary>

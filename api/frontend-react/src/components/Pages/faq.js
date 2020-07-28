@@ -1,17 +1,95 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import FaqBody from "../Body/FaqBody";
+import { withStyles } from '@material-ui/core/styles';
+import SideBar from "../NavigationBars/SideBar";
+import Copyright from "../Copyright";
 
-class Faq extends Component {
-    
+const drawerWidth = 240;
+
+const styles = theme => ({
+    root: {
+      display: 'flex',
+    },
+    appBar: {
+      zIndex: theme.zIndex.drawer + 1,
+      transition: theme.transitions.create(['width', 'margin'], {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+      }),
+    },
+    appBarShift: {
+      marginLeft: drawerWidth,
+      width: `calc(100% - ${drawerWidth}px)`,
+      transition: theme.transitions.create(['width', 'margin'], {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+    },
+    menuButton: {
+      marginRight: 12,
+    },
+    hide: {
+      display: 'none',
+    },
+    drawer: {
+      width: drawerWidth,
+      flexShrink: 0,
+      whiteSpace: 'nowrap',
+    },
+    drawerOpen: {
+      width: drawerWidth,
+      transition: theme.transitions.create('width', {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+    },
+    drawerClose: {
+      transition: theme.transitions.create('width', {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+      }),
+      overflowX: 'hidden',
+      width: theme.spacing(7) + 1,
+      [theme.breakpoints.up('sm')]: {
+        width: theme.spacing(9) + 1,
+      },
+    },
+    toolbar: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'flex-end',
+      padding: theme.spacing(0, 1),
+      // necessary for content to be below app bar
+      ...theme.mixins.toolbar,
+    },
+    content: {
+      backgroundColor: "#cfd8dc",
+      flexGrow: 1,
+      padding: theme.spacing(0),
+    },
+    contentCopyright: {
+      backgroundColor: "#fafafa",
+      flexGrow: 1,
+      padding: theme.spacing(0),
+    },
+  });
+
+
+class faq extends Component {
     render() {
-
-
+        const {classes} = this.props;
         return (
-            <div>
-                <FaqBody />    
-            </div>   
+            <div className={classes.root}>
+                <SideBar />
+                <main className={classes.content}>
+                    <div className={classes.toolbar} />
+                    <FaqBody />
+                    <main className={classes.contentCopyright}>
+                    <Copyright/>  
+                    </main>   
+                </main>
+            </div>
         );
     }
 }
-
-export default (Faq)
+export default withStyles(styles)(faq)
