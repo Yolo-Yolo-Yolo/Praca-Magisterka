@@ -23,11 +23,11 @@ export default function MediaCard() {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea href="https://www.wimir.agh.edu.pl">
         <CardMedia
           className={classes.media}
           image={WIMIR}
-          title="test"
+          title="Wydział inżynierii mechanicznej i robotyki"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">

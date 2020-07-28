@@ -13,6 +13,7 @@ const styles = theme => ({
       color: "black",
     },
     paper: {
+      backgroundColor:"#757de8",
       padding: theme.spacing(2),
       textAlign: 'center',
       color: theme.palette.text.secondary,
