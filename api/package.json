@@ -9,7 +9,7 @@
     "server": "nodemon server.js",
     "client": "npm start --prefix frontend-react",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontent-react && npm run build --prefix frontend-react"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend-react && npm run build --prefix frontend-react"
   },
   "keywords": [],
   "author": "",
