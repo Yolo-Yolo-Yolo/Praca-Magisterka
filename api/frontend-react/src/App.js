@@ -9,6 +9,11 @@ import MainPage from "./components/Pages/MainPage";
 import AdminInformation from "./components/Pages/AdminInformation";
 import StartPage from "./components/Pages/StartPage";
 import FaqPage from "./components/Pages/FaqPage";
+import AdminPanelPage from "./components/Pages/AdminPanelPage";
+import AdminAllReservationsPage from "./components/Pages/AdminAllReservationsPage";
+import NewReservationPage from "./components/Pages/NewReservationPage";
+import MyReservationsPage from "./components/Pages/MyReservationsPage";
+
 class App extends Component {
   componentDidMount() {
     store.dispatch(loadUser());
@@ -20,9 +25,16 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path='/' component={StartPage} />
-            <Route exact path='/Home' component={MainPage} />
-            <Route exact path='/admin/ogloszenia' component={AdminInformation} />
             <Route exact path='/faq' component={FaqPage} />
+            <Route exact path='/Home' component={MainPage} />
+
+            <Route exact path='/rezerwacja' component={NewReservationPage} />
+            <Route exact path='/moje_rezerwacje' component={MyReservationsPage} />
+
+            <Route exact path='/admin/ogloszenia' component={AdminInformation} />
+            <Route exact path='/admin/panel' component={AdminPanelPage} />
+            <Route exact path='/admin/rezerwacje' component={AdminAllReservationsPage} />
+            
           </Switch>
         </Router>
         </div>

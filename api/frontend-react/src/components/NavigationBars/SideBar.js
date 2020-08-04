@@ -82,7 +82,7 @@ const styles = theme => ({
 class SideBar extends Component {
     constructor(props) {
         super(props);
-        this.state = { open: false };
+        this.state = { open: true };
     }
     render() {
         const {classes} = this.props;

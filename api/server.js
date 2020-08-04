@@ -11,6 +11,8 @@ const auth = require('./routes/auth');
 const app = express();
 const port = process.env.PORT || 5000;
 
+const path = require('path');
+
 app.use(express.json());
 app.use(bodyParser.json());
 
@@ -26,7 +28,15 @@ app.use('/information',information);
 app.use('/users', users);
 app.use('/auth', auth);
 
+// Serve static assets in production HEROKU UPLOAD
+if(process.env.NODE_ENV === 'production') {
+  //Set static folder
+  app.use(express.static('frontend-react/build'));
 
+  app.get ('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend-react', 'build', 'index.html'));
+  });
+}
 
 //Server listening on port
 app.listen(port, () => {
