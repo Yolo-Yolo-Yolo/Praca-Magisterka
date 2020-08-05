@@ -23,7 +23,7 @@ export default function MediaCard() {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea href="https://www.wimir.agh.edu.pl">
+      <CardActionArea href="https://www.imir.agh.edu.pl">
         <CardMedia
           className={classes.media}
           image={WIMIR}
@@ -39,7 +39,7 @@ export default function MediaCard() {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" variant="outlined" color="primary" href="https://www.wimir.agh.edu.pl">
+        <Button size="small" variant="outlined" color="primary" href="https://www.imir.agh.edu.pl">
           Więcej Informacji
         </Button>
         <Button size="small" variant="outlined" color="Secondary" href="http://www.imir.agh.edu.pl/pl/studenci/rozklady_zajec/studia_stacjonarne_zima/">

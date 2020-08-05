@@ -11,12 +11,23 @@ const User = require("../models/User");
 
 // @route GET users
 // @desc get all users
-// @access public
+// @access private
 router.get("/getall", auth, (req, res) => {
   User.find()
     .select('-password')
     .then(items => res.json(items));
 });
+
+// @route DELETE user
+// @desc DELETE user
+// @access private
+router
+  .delete("/delete/:id", auth, (req, res) => {
+    User.findById(req.params.id).then(User =>
+      User.remove().then(() => res.json({ success: true }))
+    )
+    .catch(err => res.status(404).json({ success: false }));
+  });
 
 
 // @route POST users

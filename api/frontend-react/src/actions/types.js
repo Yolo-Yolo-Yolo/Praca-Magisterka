@@ -15,3 +15,9 @@ export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_FAIL";
 export const GET_ERRORS = "GET_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
+
+//Getting all users
+export const ALL_USERS_LOADING = "ALL_USERS_LOADING";
+export const ALL_USERS_LOADED = "ALL_USERS_LOADED";
+export const USER_DELETE = "USER_DELETE";
+
