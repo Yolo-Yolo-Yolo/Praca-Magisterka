@@ -67,7 +67,7 @@ class InformationModal extends Component {
                   placeholder="Wpisz treść ogłoszenia"
                   onChange={this.onChange}
                 ></Input>
-                <Button color="primary" onClick={this.onSubmit} variant="contained" style={{ marginTop: "2rem" }} block>
+                <Button color="primary" onClick={this.onSubmit} variant="contained" style={{ marginTop: "2rem" }} block="true">
                   Dodaj Ogłoszenie
                 </Button>
               </FormGroup>

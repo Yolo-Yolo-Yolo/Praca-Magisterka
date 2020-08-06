@@ -33,6 +33,10 @@ const UserSchema = new Schema({
     type: Boolean,
     required: true
   },
+  rola: {
+    type: String,
+    required: true
+  },
   date: {
     type: Date,
     default: Date.now

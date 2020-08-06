@@ -19,39 +19,46 @@ import ViewColumn from '@material-ui/icons/ViewColumn';
 import { connect } from "react-redux";
 import {
     getAllUsers,
-    deleteUser,
-    AddAdmin,
-    RemoveAdmin
+    ChangeRoletoUser,
+    ChangeRoletoDSNauki,
+    ChangeRoletoDSKsztalcenia,
+    ChangeRoletoDSStudenckich,
+    ChangeRoletoDSOgolnych
   } from "../../actions/allusersActions";
   import PropTypes from "prop-types";
   import AddCircleIcon from '@material-ui/icons/AddCircle';
-  import { green, red } from '@material-ui/core/colors';
-  import CloseIcon from '@material-ui/icons/Close';
+  import { green, purple } from '@material-ui/core/colors';
+  import AccessibilityRoundedIcon from '@material-ui/icons/AccessibilityRounded';
 
 class AllUsers extends Component {
       static propTypes = {
         allusers: PropTypes.object.isRequired
       };
-      state ={
-        selectedRow: null,
-        setSelectedRow: null
-      }
 
       componentDidMount() {
         this.props.getAllUsers();
       };
 
-        onDeleteClick = id => {
-            this.props.deleteUser(id);
+        onUserRole = id => {
+            this.props.ChangeRoletoUser(id);
+            window.location.reload(false)
         };
 
-        onAddAdmin = id => {
-          this.props.AddAdmin(id);
+        onDSNauki = id => {
+          this.props.ChangeRoletoDSNauki(id);
           window.location.reload(false)
         };
 
-        onRemoveAdmin = id => {
-          this.props.RemoveAdmin(id);
+        onDSKsztalcenia = id => {
+          this.props.ChangeRoletoDSKsztalcenia(id);
+          window.location.reload(false)
+        }; 
+        onDSStudenckich = id => {
+            this.props.ChangeRoletoDSStudenckich(id);
+            window.location.reload(false)
+          }; 
+        onDSOgolnych = id => {
+          this.props.ChangeRoletoDSOgolnych(id);
           window.location.reload(false)
         }; 
   render() {
@@ -79,7 +86,7 @@ class AllUsers extends Component {
       <div style={{ maxWidth: "100%" }}>
         <MaterialTable
         icons={tableIcons}
-      title="Lista użytkowników + Usuwanie użytkowników + Dodawanie/Zabieranie praw administratora"
+      title="Nadawanie odpowiednich roli dla użytkowników (Prodziekani)"
       columns={[
         { 
             title: 'Imię', 
@@ -94,43 +101,37 @@ class AllUsers extends Component {
             field: 'email'
         },
         {
-          title: 'Admin',
-          field: 'isAdmin',
-          type: 'boolean'
-        },
-        { 
-            title: 'Nr Albumu', 
-            field: 'album', 
-            type: 'numeric' 
-        },
-        {
-          title: 'Telefon',
-          field: 'telefon',
-          type: 'numeric'
-        },
-        {
-          title: 'Data utworzenia',
-          field: 'date',
-          type: 'date'
-        },
+          title: 'Rola',
+          field: 'rola'
+        }
       ]}
       data={allusers}
       actions={[
         {
-          icon: () => <DeleteOutline />,
-          tooltip: 'Usuń użytkownika',
-          onClick: (event, rowData) => this.onDeleteClick(rowData._id),
+          icon: () => <AccessibilityRoundedIcon />,
+          tooltip: 'Zmień na Użytkownika',
+          onClick: (event, rowData) => this.onUserRole(rowData._id),
         },
         {
-        icon: () => <AddCircleIcon style={{ color: green[500] }} />,
-          tooltip: 'Dodaj prawa administratora',
-          onClick: (event, rowData) => this.onAddAdmin(rowData._id),
+        icon: () => <AddCircleIcon color='primary' />,
+          tooltip: 'Zmień na Prodziekan ds. Nauki',
+          onClick: (event, rowData) => this.onDSNauki(rowData._id),
         }, 
         {
-          icon: () => <CloseIcon style={{ color: red[500] }} />,
-            tooltip: 'Usuń prawa administratora',
-            onClick: (event, rowData) => this.onRemoveAdmin(rowData._id),
-          },
+          icon: () => <AddCircleIcon color='secondary' />,
+            tooltip: 'Zmień na Prodziekan ds. Kształcenia',
+            onClick: (event, rowData) => this.onDSKsztalcenia(rowData._id),
+        },
+        {
+          icon: () => <AddCircleIcon style={{ color: green[500] }} />,
+            tooltip: 'Zmień na Prodziekan ds. Studenckich',
+            onClick: (event, rowData) => this.onDSStudenckich(rowData._id),
+        },
+        {
+          icon: () => <AddCircleIcon style={{ color: purple[500] }} />,
+            tooltip: 'Zmień na Prodziekan ds. Ogólnych',
+            onClick: (event, rowData) => this.onDSOgolnych(rowData._id),
+        },
       ]}
       options={{
         actionsColumnIndex: -1
@@ -154,7 +155,7 @@ class AllUsers extends Component {
             placeholder: "Przeciągaj nagłówki..",
           },
           header: {
-            actions: 'Akcje'
+            actions: 'Zmień Role'
           },
           pagination: {
             labelDisplayedRows: 'od {from} do {to} z {count} ogółem',
@@ -192,6 +193,6 @@ const mapStatetoProps = state => ({
   });
 
 
-  export default connect(mapStatetoProps, { getAllUsers, deleteUser, AddAdmin, RemoveAdmin })(
+  export default connect(mapStatetoProps, { getAllUsers, ChangeRoletoUser, ChangeRoletoDSNauki, ChangeRoletoDSKsztalcenia, ChangeRoletoDSStudenckich, ChangeRoletoDSOgolnych })(
     AllUsers
   );

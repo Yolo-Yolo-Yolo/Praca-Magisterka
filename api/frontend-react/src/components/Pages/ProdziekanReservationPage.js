@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import AdminPanel from './AdminPanel';
+import ProdziekanReservation from './ProdziekanReservation';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import LoadingPage from "./LoadingPage";
-class AdminPanelPage extends Component {
+
+class ProdziekanReservationPage extends Component {
     
     static propTypes = {
         auth: PropTypes.object.isRequired
@@ -13,7 +14,7 @@ class AdminPanelPage extends Component {
         const { user, isAuthenticated } = this.props.auth;
         return (
             <div>
-                {isAuthenticated&&user.isAdmin ? <AdminPanel /> : <LoadingPage />}
+                {isAuthenticated&&user.role !== "Użytkownik" ? <ProdziekanReservation /> : <LoadingPage />}
             </div>
         );
     }
@@ -22,4 +23,4 @@ const mapStatetoProps = state => ({
     auth: state.auth
   });
   
-export default connect(mapStatetoProps, null)(AdminPanelPage)
+export default connect(mapStatetoProps, null)(ProdziekanReservationPage)

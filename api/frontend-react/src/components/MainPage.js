@@ -21,7 +21,7 @@ const MainPage = props => {
           Witaj, studencie!
         </h1>
         <p className="lead" align="center">
-          To jest strona E-Dziekanatu Wydziału Inżynierii Mechanicznej i
+          To jest system rezerwacji wizyt na Wydziale Inżynierii Mechanicznej i
           Robotyki.
         </p>
         <hr className="my-2" />

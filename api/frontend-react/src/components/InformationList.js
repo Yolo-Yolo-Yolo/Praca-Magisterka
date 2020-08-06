@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 
 class InformationList extends Component {
   static propTypes = {
-    getItems: PropTypes.func.isRequired,
+    //getItems: PropTypes.func.isRequired,
     item: PropTypes.object.isRequired,
     isAuthenticated: PropTypes.bool
   };

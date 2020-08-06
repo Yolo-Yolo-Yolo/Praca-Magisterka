@@ -11,10 +11,10 @@ class AdminAllReservationsPage extends Component {
       };
 
     render() {
-        const { isAuthenticated } = this.props.auth;
+        const { user, isAuthenticated } = this.props.auth;
         return (
             <div>
-                {isAuthenticated ? <AdminAllReservations /> : <LoadingPage />}
+                {isAuthenticated&&user.isAdmin ? <AdminAllReservations /> : <LoadingPage />}
             </div>
         );
     }

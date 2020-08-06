@@ -27,7 +27,7 @@ export default function ButtonAppBar() {
       <AppBar position="static" color="primary">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-          <img src={Wimir} alt='Wydział Inżynierii Mechanicznej i Robotyki' width="100" height="30" />  E-DZIEKANAT
+          <img src={Wimir} alt='Wydział Inżynierii Mechanicznej i Robotyki' width="100" height="30" />  SYSTEM REZERWACJI
           </Typography>
           <RegisterModal />
           <LoginModal />

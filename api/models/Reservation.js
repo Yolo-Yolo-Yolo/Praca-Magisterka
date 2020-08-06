@@ -33,12 +33,16 @@ const ReservationSchema = new Schema({
     type: String,
     required: true
   },
-  type: {
+  do_kogo: {
     type: String,
     required: true 
   },
-  description: {
+  opis: {
     type: String,
+    required: true 
+  },
+  potwierdzona: {
+    type: Boolean,
     required: true 
   }
 });

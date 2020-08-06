@@ -15,12 +15,12 @@ const StartPage = props => {
           Witaj, studencie!
         </h1>
         <p className="lead" align="center">
-          To jest strona E-Dziekanatu Wydziału Inżynierii Mechanicznej i
+          To jest system rezerwacji wizyt na Wydziale Inżynierii Mechanicznej i
           Robotyki.
         </p>
         <hr className="my-2" />
         <p align="center">
-          Strona jest przeznaczona do rezerwacji wizyt w dziekanacie.
+          Strona jest przeznaczona do rezerwacji wizyt u dziekanów.
         </p>
         <Footer />
       </Jumbotron>

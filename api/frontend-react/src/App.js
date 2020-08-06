@@ -13,7 +13,7 @@ import AdminPanelPage from "./components/Pages/AdminPanelPage";
 import AdminAllReservationsPage from "./components/Pages/AdminAllReservationsPage";
 import NewReservationPage from "./components/Pages/NewReservationPage";
 import MyReservationsPage from "./components/Pages/MyReservationsPage";
-
+import ProdziekanReservationPage from "./components/Pages/ProdziekanReservationPage";
 class App extends Component {
   componentDidMount() {
     store.dispatch(loadUser());
@@ -30,6 +30,8 @@ class App extends Component {
 
             <Route exact path='/rezerwacja' component={NewReservationPage} />
             <Route exact path='/moje_rezerwacje' component={MyReservationsPage} />
+
+            <Route exact path='/prodziekan/moje_rezerwacje' component={ProdziekanReservationPage} />
 
             <Route exact path='/admin/ogloszenia' component={AdminInformation} />
             <Route exact path='/admin/panel' component={AdminPanelPage} />

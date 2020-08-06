@@ -9,9 +9,9 @@ import {
 import PropTypes from "prop-types";
 import Moment from 'react-moment';
 
-class InformationList extends Component {
+class AllInformations extends Component {
   static propTypes = {
-    getItems: PropTypes.func.isRequired,
+    //getItems: PropTypes.func.isRequired,
     item: PropTypes.object.isRequired,
     isAuthenticated: PropTypes.bool
   };
@@ -63,5 +63,5 @@ const mapStatetoProps = state => ({
 });
 
 export default connect(mapStatetoProps, { getInformations, deleteInformation })(
-  InformationList
+  AllInformations
 );

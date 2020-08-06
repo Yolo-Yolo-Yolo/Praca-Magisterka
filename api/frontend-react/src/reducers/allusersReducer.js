@@ -1,7 +1,10 @@
 import {
     ALL_USERS_LOADING,
     ALL_USERS_LOADED,
-    USER_DELETE
+    USER_DELETE,
+    ADD_ADMIN,
+    REMOVE_ADMIN,
+    CHANGE_ROLE
   } from "../actions/types";
 
   const initialState = {
@@ -21,6 +24,21 @@ import {
         return {
           ...state,
           allusers: state.allusers.filter(allusers => allusers._id !== action.payload)
+        };
+      case ADD_ADMIN:
+        return {
+          ...state,
+          //allusers: state.allusers.filter(allusers => allusers._id !== action.payload)
+        };
+      case CHANGE_ROLE:
+        return {
+          ...state,
+          //allusers: state.allusers.filter(allusers => allusers._id !== action.payload)
+        };
+      case REMOVE_ADMIN:
+        return {
+          ...state,
+          //allusers: state.allusers.filter(allusers => allusers._id !== action.payload)
         };
       case ALL_USERS_LOADING:
         return {

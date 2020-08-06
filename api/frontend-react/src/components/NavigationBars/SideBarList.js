@@ -120,9 +120,43 @@ class SideBarList extends Component {
                 </List>
                 </div>
         )
+
+        const ProdziekanList = (
+            <div>
+            <List subheader={
+                <ListSubheader component="div" id="nested-list-subheader">
+                <strong>DEAN</strong>
+                </ListSubheader>
+                 }>
+                    <ListItem button component="a" href="prodziekan/moje_rezerwacje">
+                    <ListItemIcon><EventSeatRoundedIcon /></ListItemIcon>
+                    <ListItemText primary="Rezerwacje" />
+                    </ListItem>
+                </List>
+                <Divider />
+                <List subheader={
+                <ListSubheader component="div" id="nested-list-subheader">
+                <strong>ALL</strong>
+                </ListSubheader>
+                 }>
+                    <ListItem button component="a" href="/home">
+                    <ListItemIcon><HomeRoundedIcon /></ListItemIcon>
+                    <ListItemText primary="Panel Główny" />
+                    </ListItem>
+                    <ListItem button component="a" href="/faq">
+                    <ListItemIcon><LiveHelpRoundedIcon /></ListItemIcon>
+                    <ListItemText primary="FAQ" />
+                    </ListItem>
+                    <ListItem button component="a" href="/" onClick={this.props.logout}>
+                    <ListItemIcon><ExitToAppRoundedIcon /></ListItemIcon>
+                    <ListItemText primary="Wyloguj" />
+                    </ListItem>
+                </List>
+                </div>
+        )
         return (
             <div>
-                 { user.isAdmin ? adminList : userList}
+                 { user.isAdmin ? adminList : (user.role !== "Użytkownik" ? ProdziekanList : userList)}
             </div>    
         );
     }

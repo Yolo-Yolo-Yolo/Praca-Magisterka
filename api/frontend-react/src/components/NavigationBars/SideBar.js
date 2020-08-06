@@ -115,7 +115,7 @@ class SideBar extends Component {
                     <MenuIcon />
                 </IconButton>
                 <Typography variant="h6"  noWrap >
-                    E-DZIEKANAT WIMIR
+                    SYSTEM REZERWACJI
                 </Typography>
                 </Toolbar>
             </AppBar>

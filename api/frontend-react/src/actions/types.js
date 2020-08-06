@@ -21,3 +21,9 @@ export const ALL_USERS_LOADING = "ALL_USERS_LOADING";
 export const ALL_USERS_LOADED = "ALL_USERS_LOADED";
 export const USER_DELETE = "USER_DELETE";
 
+//Adding/Removing Admin
+export const ADD_ADMIN = "ADD_ADMIN";
+export const REMOVE_ADMIN = "REMOVE_ADMIN";
+
+//Changing roles
+export const CHANGE_ROLE = "CHANGE_ROLE";

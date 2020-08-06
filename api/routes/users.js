@@ -29,12 +29,34 @@ router
     .catch(err => res.status(404).json({ success: false }));
   });
 
+// @route POST user/upgrade
+// @desc POST user/upgrade
+// @access private
+router
+.post("/upgrade/:id", (req, res) => {
+  User.findByIdAndUpdate(req.params.id, { isAdmin: true }, { useFindAndModify: false }).then(User =>
+    User.save().then(() => res.json({ success: true }))
+  )
+  .catch(err => res.status(404).json({ success: false }));
+});
+
+// @route POST user/downgrade
+// @desc POST user/downgrade
+// @access private
+router
+.post("/downgrade/:id", (req, res) => {
+  User.findByIdAndUpdate(req.params.id, { isAdmin: false }, { useFindAndModify: false }).then(User =>
+    User.save().then(() => res.json({ success: true }))
+  )
+  .catch(err => res.status(404).json({ success: false }));
+});
+
 
 // @route POST users
 // @desc Register new user
 // @access public
 router.post("/", (req, res) => {
-  const { email, password, album, imie, nazwisko, telefon, isAdmin } = req.body;
+  const { email, password, album, imie, nazwisko, telefon, isAdmin, rola } = req.body;
 
   // Simple validation
   if (!email || !password || !album || !imie || !nazwisko || !telefon) {
@@ -53,7 +75,8 @@ router.post("/", (req, res) => {
       imie,
       nazwisko,
       telefon,
-      isAdmin : false
+      isAdmin : false,
+      rola : "Użytkownik"
     });
     // Create salt & hash password
     bcrypt.genSalt(10, (err, salt) => {
@@ -76,7 +99,8 @@ router.post("/", (req, res) => {
                   imie: user.imie,
                   nazwisko: user.nazwisko,
                   telefon: user.telefon,
-                  isAdmin: false
+                  isAdmin: user.isAdmin,
+                  rola: user.rola
                 }
               });
             }
@@ -86,5 +110,62 @@ router.post("/", (req, res) => {
     });
   });
 });
+
+// 
+// Changing Roles
+//
+// @route POST user/upgraderole
+// @desc POST user/upgraderole
+// @access private
+router
+.post("/upgraderole/user/:id", (req, res) => {
+  User.findByIdAndUpdate(req.params.id, { rola: "Użytkownik" }, { useFindAndModify: false }).then(User =>
+    User.save().then(() => res.json({ success: true }))
+  )
+  .catch(err => res.status(404).json({ success: false }));
+});
+// @route POST user/upgraderole
+// @desc POST user/upgraderole
+// @access private
+router
+.post("/upgraderole/dsnauki/:id", (req, res) => {
+  User.findByIdAndUpdate(req.params.id, { rola: "Prodziekan ds. Nauki" }, { useFindAndModify: false }).then(User =>
+    User.save().then(() => res.json({ success: true }))
+  )
+  .catch(err => res.status(404).json({ success: false }));
+});
+// @route POST user/upgraderole
+// @desc POST user/upgraderole
+// @access private
+router
+.post("/upgraderole/dsksztalcenia/:id", (req, res) => {
+  User.findByIdAndUpdate(req.params.id, { rola: "Prodziekan ds. Kształcenia" }, { useFindAndModify: false }).then(User =>
+    User.save().then(() => res.json({ success: true }))
+  )
+  .catch(err => res.status(404).json({ success: false }));
+});
+// @route POST user/upgraderole
+// @desc POST user/upgraderole
+// @access private
+router
+.post("/upgraderole/dsstudenckich/:id", (req, res) => {
+  User.findByIdAndUpdate(req.params.id, { rola: "Prodziekan ds. Studenckich" }, { useFindAndModify: true }).then(User =>
+    User.save().then(() => res.json({ success: true }))
+  )
+  .catch(err => res.status(404).json({ success: false }));
+});
+// @route POST user/upgraderole
+// @desc POST user/upgraderole
+// @access private
+router
+.post("/upgraderole/dsogolnych/:id", (req, res) => {
+  User.findByIdAndUpdate(req.params.id, { rola: "Prodziekan ds. Ogólnych" }, { useFindAndModify: false }).then(User =>
+    User.save().then(() => res.json({ success: true }))
+  )
+  .catch(err => res.status(404).json({ success: false }));
+});
+
+
+
 
 module.exports = router;
