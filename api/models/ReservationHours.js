@@ -7,12 +7,12 @@ const ReservationHoursSchema = new Schema({
     type: String,
     required: true
   },
-  date: {
-    type: String,
+  Startdate: {
+    type: Date,
     required: true
   },
-  hours: {
-    type: Array,
+  EndDate: {
+    type: Date,
     required: true
   }
 });

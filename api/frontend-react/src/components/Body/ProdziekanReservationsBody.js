@@ -3,6 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import ProdziekanAddingReservations from "../Other/ProdziekanAddingReservations";
 
 const styles = theme => ({
     root: {
@@ -26,12 +27,12 @@ class ProdziekanReservationsBody extends Component {
                 <div className={classes.root}>
                     <Container maxWidth>
                         <Grid container spacing={3} style={{marginTop:"1rem"}}>
-                            <Grid item xs={6}>
-                            <Paper className={classes.paper}><h1 align="center" style={{color:"black"}}>
-                                        TEST
-                                    </h1></Paper>
+                            <Grid item xs={3}>
+                            <Paper className={classes.paper}>
+                            <ProdziekanAddingReservations />
+                            </Paper>
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item xs={9}>
                             <Paper className={classes.paper}><h1 align="center" style={{color:"black"}}>
                                         TEST
                                     </h1></Paper>

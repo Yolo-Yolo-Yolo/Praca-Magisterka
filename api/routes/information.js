@@ -11,7 +11,7 @@ const Information = require("../models/Information");
 router.get("/", (req, res) => {
   Information.find()
     .sort({ date: -1 })
-    .then(items => res.json(items));
+    .then(items => res.json(items)); 
 });
 
 // @route POST information

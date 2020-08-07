@@ -29,7 +29,8 @@ import {
   import CloseIcon from '@material-ui/icons/Close';
 
 class AllUsers extends Component {
-      static propTypes = {
+
+  static propTypes = {
         allusers: PropTypes.object.isRequired
       };
       state ={
