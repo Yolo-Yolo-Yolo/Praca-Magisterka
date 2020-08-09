@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import AllUsers from '../Other/AllUsers';
 import AllUsersRoles from '../Other/AllUsersRoles';
+import AllProdziekanReservationHours from '../Other/AllProdziekanReservationHours';
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -35,6 +36,11 @@ class AdminPanelBody extends Component {
                             <Grid item xs={12}>
                             <Paper className={classes.paper} style={{marginBottom:"1rem", backgroundColor:"#757de8"}}>
                                         <AllUsersRoles />
+                            </Paper>
+                            </Grid>
+                            <Grid item xs={12}>
+                            <Paper className={classes.paper} style={{marginBottom:"1rem", backgroundColor:"#757de8"}}>
+                                        <AllProdziekanReservationHours />
                             </Paper>
                             </Grid>
                         </Grid>

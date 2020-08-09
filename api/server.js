@@ -7,12 +7,13 @@ const config = require('config');
 const information = require('./routes/information');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
+const reservationshours = require('./routes/reservationshours');
 //Loading app
 const app = express();
 const port = process.env.PORT || 5000;
-
+//Loading path
 const path = require('path');
-
+//Loading Express and body Parser
 app.use(express.json());
 app.use(bodyParser.json());
 
@@ -27,6 +28,7 @@ mongoose
 app.use('/information',information);
 app.use('/users', users);
 app.use('/auth', auth);
+app.use('/reservationshours', reservationshours);
 
 // Serve static assets in production HEROKU UPLOAD
 if(process.env.NODE_ENV === 'production') {

@@ -12,36 +12,86 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import Button from '@material-ui/core/Button';
+import { connect } from "react-redux";
+import { addReservationHours } from "../../actions/reservationhoursActions";
+import PropTypes from "prop-types";
+import pl from "date-fns/locale/pl";
+import moment from 'moment-timezone';
+
+moment.tz('Europe/Warsaw');
+registerLocale("pl", pl);
 
 class ProdziekanAddingReservations extends Component {
     constructor(props) {
         super(props);
         this.state = {
+          do_kogo: " ",
           Startdate: setHours(setMinutes(new Date(), 0), 0),
-          Enddate: setHours(setMinutes(new Date(), 0), 0)
+          Enddate: setHours(setMinutes(new Date(), 0), 0),
+          StartdateFormatPL: setHours(setMinutes(new Date(), 0), 0),
+          EnddateFormatPL: setHours(setMinutes(new Date(), 0), 0),
+          StartdateFormatUS: setHours(setMinutes(new Date(), 0), 0),
+          EnddateFormatUS: setHours(setMinutes(new Date(), 0), 0),
         }
         this.handleChangeStartDate = this.handleChangeStartDate.bind(this);
         this.handleChangeEndDate = this.handleChangeEndDate.bind(this);
       }
 
+      static propTypes = {
+        isAuthenticated: PropTypes.bool,
+        auth: PropTypes.object.isRequired
+      };
+
+      componentDidMount() {
+        const { user } = this.props.auth;
+        this.setState({do_kogo : `${user.rola}`});
+      }  
+
       handleChangeStartDate(Startdate) {
         this.setState({
           Startdate
         });
+        const StartdateFormatPL = Startdate.toLocaleString('pl-PL');
+        const StartdateFormatUS = Startdate.toLocaleString('en-US');
+        //console.log(new Date(StartdateFormatPL).toISOString());
+        this.setState({StartdateFormatPL});
+        this.setState({StartdateFormatUS});
       }
 
       handleChangeEndDate(Enddate) {
         this.setState({
           Enddate
         });
+        const EnddateFormatPL = Enddate.toLocaleString('pl-PL');
+        const EnddateFormatUS = Enddate.toLocaleString('en-US');
+        //console.log(EnddateFormatPL);
+        this.setState({EnddateFormatPL});
+        this.setState({EnddateFormatUS});
       }
-    render() {
 
+      onSubmit = e => {
+        e.preventDefault();
+        
+        const newReservationHours = {
+          do_kogo: this.state.do_kogo,
+          Startdate: this.state.StartdateFormatUS,
+          EndDate: this.state.EnddateFormatUS,
+          StartdateFormatPL: this.state.StartdateFormatPL,
+          EndDateFormatPL: this.state.EnddateFormatPL
+        };
+    
+        //Add item via addItem action
+        this.props.addReservationHours(newReservationHours);
+    
+      };
+
+    render() {
+      
         return (
             <div style ={{color:"black"}}>
             <List subheader={
             <ListSubheader component="div" id="nested-list-subheader" style={{align:"left"}}>
-            <strong>DODAJ NOWY DYŻUR DLA STUDENTÓW</strong>
+            <strong>DODAJ NOWY DYŻUR DLA STUDENTÓW </strong>
             </ListSubheader>
              }>
                 <Divider />
@@ -49,10 +99,12 @@ class ProdziekanAddingReservations extends Component {
                 <ListItemIcon><ScheduleIcon /></ListItemIcon>
                 <ListItemText primary="Start dyżuru: " secondary={<DatePicker
                                 dateFormat="dd/MM/yyyy H:mm"
+                                name="StartDate"
                                 selected={this.state.Startdate}
                                 onChange={this.handleChangeStartDate}
                                 showTimeSelect
                                 timeIntervals={30}
+                                locale='pl'
                             />} />
                 </ListItem>
                 <Divider />
@@ -60,16 +112,18 @@ class ProdziekanAddingReservations extends Component {
                 <ListItemIcon><SnoozeIcon /></ListItemIcon>
                 <ListItemText primary="Koniec dyżuru: "  secondary={<DatePicker
                                 dateFormat="dd/MM/yyyy H:mm"
+                                name="EndDate"
                                 selected={this.state.Enddate}
                                 onChange={this.handleChangeEndDate}
                                 showTimeSelect
                                 timeIntervals={30}
+                                locale='pl'
                             />} />
                 </ListItem>
                 <Divider />
                 <ListItem>
                 
-                <ListItemText primary="" secondary={<Button color="primary" variant="contained" style={{ marginLeft: "3.5rem" }} block="true">
+                <ListItemText primary="" secondary={<Button color="primary" onClick={this.onSubmit} variant="contained" style={{ marginLeft: "3.5rem" }} block="true">
                   Dodaj Nowy Dyżur
                 </Button>} />
                 </ListItem>
@@ -78,5 +132,10 @@ class ProdziekanAddingReservations extends Component {
         );
     }
 }
+const mapStatetoProps = state => ({
+  auth: state.auth,
+  reservationhours: state.reservationhours,
+  isAuthenticated: state.auth.isAuthenticated
+});
 
-export default (ProdziekanAddingReservations);
+export default connect(mapStatetoProps, { addReservationHours })(ProdziekanAddingReservations);

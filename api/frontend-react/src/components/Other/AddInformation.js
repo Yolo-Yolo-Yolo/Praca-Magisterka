@@ -34,7 +34,7 @@ class InformationModal extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-
+    
     const newInformation = {
       title: this.state.title,
       info: this.state.info
