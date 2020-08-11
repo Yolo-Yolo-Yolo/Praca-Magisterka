@@ -17,7 +17,8 @@ router.post("/hours", auth, (req, res) => {
         Startdate: req.body.Startdate,
         EndDate: req.body.EndDate,
         StartdateFormatPL: req.body.StartdateFormatPL,
-        EndDateFormatPL: req.body.EndDateFormatPL
+        EndDateFormatPL: req.body.EndDateFormatPL,
+        godziny: req.body.godziny
     });
     newReservationHours.save().then(ReservationHours => res.json(ReservationHours));
   });

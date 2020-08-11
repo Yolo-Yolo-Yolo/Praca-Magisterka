@@ -22,6 +22,10 @@ const ReservationHoursSchema = new Schema({
   EndDateFormatPL: {
     type: String,
     required: true
+  },
+  godziny: {
+    type: Array,
+    required: true
   }
 });
 
