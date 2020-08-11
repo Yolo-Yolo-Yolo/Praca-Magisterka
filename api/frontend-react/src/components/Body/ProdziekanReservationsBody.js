@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import ProdziekanAddingReservations from "../Other/ProdziekanAddingReservations";
 import ProdziekanReservationHours from "../Other/ProdziekanReservationHours";
+import ProdziekanHours from "../Other/ProdziekanHours";
 
 const styles = theme => ({
     root: {
@@ -39,9 +40,9 @@ class ProdziekanReservationsBody extends Component {
                                         </Paper>
                             </Grid>
                             <Grid item xs={12}>
-                            <Paper className={classes.paper} style={{marginBottom:"1rem"}}><h1 align="center" style={{color:"black"}}>
-                                        STRONA W PRODUKCJI
-                                    </h1></Paper>
+                                <Paper className={classes.paper} style={{marginBottom:"1rem"}}>
+                                    <ProdziekanHours />
+                                </Paper>
                             </Grid>
                         </Grid>
                     </Container>

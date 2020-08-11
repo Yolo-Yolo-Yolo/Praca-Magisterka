@@ -17,6 +17,7 @@ import { addReservationHours } from "../../actions/reservationhoursActions";
 import PropTypes from "prop-types";
 import pl from "date-fns/locale/pl";
 import moment from 'moment-timezone';
+import uuid from 'react-uuid';
 
 moment.tz('Europe/Warsaw');
 registerLocale("pl", pl);
@@ -26,8 +27,9 @@ class ProdziekanAddingReservations extends Component {
         super(props);
         this.state = {
           do_kogo: " ",
-          godziny:[],
-          hours: {hour: "", isBooked: false},
+          godziny: [],
+          TemporaryDate: setHours(setMinutes(new Date(), 0), 0),
+          hours: { id : "", hour : "", isBooked : false, isConfirmed: false },
           Startdate: setHours(setMinutes(new Date(), 0), 0),
           Enddate: setHours(setMinutes(new Date(), 0), 0),
           StartdateFormatPL: setHours(setMinutes(new Date(), 0), 0),
@@ -73,40 +75,27 @@ class ProdziekanAddingReservations extends Component {
 
       onSubmit = e => {
         e.preventDefault();
-        // Code to create array of possible hours to book
+        ////////////////////////////////////////////////////
+        // Code to create array of possible hours to book///
+        ////////////////////////////////////////////////////
         const StartTime = new Date(this.state.StartdateFormatUS);
         const EndTime = new Date(this.state.EnddateFormatUS);
-        //const StartTimeLocalString = StartTime.toLocaleString('pl-PL');
 
-        
-       // hoursObject.hour = StartTimeLocalString;
-        //this.setState({hours: hoursObject});
-        //this.state.godziny.push(this.state.hours);
         const hoursObject = this.state.hours;
-        
-        for (let i=0; i < 2; i++) {
+
+        for (let i=0; StartTime.getTime()+i*300000 < EndTime.getTime() ; i++) {
             const TimeForLoop = StartTime;
             const time = TimeForLoop.getTime()+i*300000;
             let TimeForLoop2 = new Date(time);
             let TimeForLoopLocaleString = TimeForLoop2.toLocaleString('pl-PL');
-
+            
+            hoursObject.id = uuid();
             hoursObject.hour = TimeForLoopLocaleString;
-            this.setState({hours: hoursObject});
-            this.state.godziny.push(this.state.hours);
-            const test = [];
-            test[i] = hoursObject;
-
-
-            console.log(test[0] + test[1]);
+            this.state.godziny.push({id: hoursObject.id, hour: hoursObject.hour, isBooked: hoursObject.isBooked, isConfirmed: false });
+            //console.log("Liczba iteracji:"+ i );
         }
         
-        console.log(this.state.godziny);
-
-
-
-
-
-
+        //console.log(this.state.godziny);
         const newReservationHours = {
           do_kogo: this.state.do_kogo,
           Startdate: this.state.StartdateFormatUS,
@@ -118,7 +107,7 @@ class ProdziekanAddingReservations extends Component {
     
         //Add item via addItem action
         this.props.addReservationHours(newReservationHours);
-    
+        this.setState({godziny: []});
       };
 
     render() {

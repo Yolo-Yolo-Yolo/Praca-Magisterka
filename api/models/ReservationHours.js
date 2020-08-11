@@ -24,7 +24,7 @@ const ReservationHoursSchema = new Schema({
     required: true
   },
   godziny: {
-    type: Array,
+    type: Object,
     required: true
   }
 });
