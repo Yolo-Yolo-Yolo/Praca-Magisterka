@@ -34,7 +34,7 @@ export default function MediaCard() {
             Wydział Inżynierii Mechanicznej i Robotyki
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p" style={{height:"268px"}}>
-          Wydział Inżynierii Mechanicznej i Robotyki jest jednym z najstarszych i największych na Akademii Górniczo-Hutniczej w Krakowie. Możemy poszczycić się osiągnięciami, które dają nam pozycję jednego z najlepszych wydziałów o profilu mechatronicznym w Polsce i na świecie. Jak dotąd wykształciliśmy tysiące absolwentów, którzy piastują wysokie stanowiska w przemyśle, szkolnictwie wyższym i administracji państwowej w wielu krajach, na wszystkich kontynentach.
+          Wydział Inżynierii Mechanicznej i Robotyki jest jednym z najstarszych i największych na Akademii Górniczo-Hutniczej w Krakowie. Możemy poszczycić się osiągnięciami, które dają nam pozycję jednego z najlepszych wydziałów o profilu mechatronicznym w Polsce i na świecie.
           </Typography>
         </CardContent>
       </CardActionArea>

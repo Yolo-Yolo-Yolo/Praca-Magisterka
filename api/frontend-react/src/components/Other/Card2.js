@@ -34,7 +34,7 @@ export default function MediaCard() {
             Akademia Górniczo-Hutnicza
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p" style={{height:"290px"}}>
-          Akademia Górniczo-Hutnicza im. Stanisława Staszica w Krakowie, AGH (dawniej Akademia Górnicza w Krakowie) – największa polska uczelnia techniczna, powołana 8 kwietnia 1919 uchwałą Rady Ministrów. Jedna z najlepszych uczelni w Polsce. Większość obiektów dydaktycznych, administracyjnych oraz o innym charakterze (w tym domów studenckich) należących do AGH mieści się w rejonie Krakowa ograniczonym ulicami: Reymonta, Piastowską, Tokarskiego, Nawojki i Czarnowiejską oraz aleją Mickiewicza. Powierzchnia kampusu wynosi 38 hektarów.
+          Akademia Górniczo-Hutnicza im. Stanisława Staszica w Krakowie, AGH (dawniej Akademia Górnicza w Krakowie) – największa polska uczelnia techniczna, powołana 8 kwietnia 1919 uchwałą Rady Ministrów. Jedna z najlepszych uczelni w Polsce. Powierzchnia kampusu wynosi 38 hektarów.
           </Typography>
         </CardContent>
       </CardActionArea>

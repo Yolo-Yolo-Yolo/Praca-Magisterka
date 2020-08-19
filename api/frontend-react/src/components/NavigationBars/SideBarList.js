@@ -156,7 +156,7 @@ class SideBarList extends Component {
         )
         return (
             <div>
-                 { user.isAdmin ? adminList : (user.role !== "Użytkownik" ? ProdziekanList : userList)}
+                 { user.isAdmin ? adminList : (user.rola !== "Użytkownik" ? ProdziekanList : userList)}
             </div>    
         );
     }

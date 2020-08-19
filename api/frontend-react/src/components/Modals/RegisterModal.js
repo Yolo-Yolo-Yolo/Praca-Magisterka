@@ -14,6 +14,9 @@ import PropTypes from "prop-types";
 import { register } from "../../actions/authActions";
 import { clearErrors } from "../../actions/errorActions";
 import Button from '@material-ui/core/Button';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+
 
 class RegisterModal extends Component {
   state = {
@@ -24,6 +27,7 @@ class RegisterModal extends Component {
     imie: "",
     nazwisko: "",
     telefon: "",
+    zgoda: false,
     msg: null
   };
   static propTypes = {
@@ -59,6 +63,11 @@ class RegisterModal extends Component {
       modal: !this.state.modal
     });
   };
+  CheckboxChange = () => {
+    this.setState({
+      zgoda: !this.state.zgoda
+    });
+  };
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -77,8 +86,15 @@ class RegisterModal extends Component {
       nazwisko,
       telefon
     };
+
     //Attempt to register
+    if(this.state.zgoda)
+    {
     this.props.register(newUser);
+    } else
+    {
+      this.setState({ msg: "Musisz wyrazić zgodę na przetwarzanie danych" });
+    }
   };
   render() {
     return (
@@ -150,6 +166,14 @@ class RegisterModal extends Component {
                   placeholder="666555444"
                   onChange={this.onChange}
                 ></Input>
+                </FormGroup>
+                <FormGroup>
+                <FormControlLabel
+                  value="end"
+                  control={<Checkbox color="primary" onClick={this.CheckboxChange} />}
+                  label="Zgadzam się na przetwarzanie, oraz przechowywanie danych tylko w celach rezerwacji wizyt."
+                  labelPlacement="end"
+                />
                 <Button color="primary" onClick={this.onSubmit} variant="contained" style={{ marginTop: "2rem" }} block>
                   Zarejestruj
                 </Button>

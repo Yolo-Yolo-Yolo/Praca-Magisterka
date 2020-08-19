@@ -34,7 +34,7 @@ export default function MediaCard() {
             Koła Naukowe AGH
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p" style={{height:"270px"}}>
-          Studenckie koła naukowe AGH były, są i będą najskuteczniejszą szkołą talentów i prawdziwą „kuźnią” przyszłych kadr naukowych – zarówno macierzystej Uczelni, jak i wielu placówek naukowych, zatrudniających naszych absolwentów. Koła naukowe skupiają młodzież, która chce poszerzać, doskonalić i wzbogacać obowiązujący program, poprzez dodatkowe studia literaturowe, referaty, dyskusje. Utrwalany przez studentów w kołach naukowych nawyk doskonalenia swej wiedzy i umiejętności permanentnego samokształcenia pozostaje na zawsze.
+          Studenckie koła naukowe AGH były, są i będą najskuteczniejszą szkołą talentów i prawdziwą „kuźnią” przyszłych kadr naukowych – zarówno macierzystej Uczelni, jak i wielu placówek naukowych, zatrudniających naszych absolwentów. Koła naukowe skupiają młodzież, która chce poszerzać, doskonalić i wzbogacać obowiązujący program, poprzez dodatkowe studia literaturowe, referaty, dyskusje. 
           </Typography>
         </CardContent>
       </CardActionArea>
