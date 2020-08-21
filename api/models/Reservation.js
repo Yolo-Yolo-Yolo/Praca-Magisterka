@@ -29,10 +29,6 @@ const ReservationSchema = new Schema({
     type: String,
     required: true
   },
-  hour: {
-    type: String,
-    required: true
-  },
   do_kogo: {
     type: String,
     required: true 
@@ -42,6 +38,10 @@ const ReservationSchema = new Schema({
     required: true 
   },
   potwierdzona: {
+    type: Boolean,
+    required: true 
+  },
+  id_terminu: {
     type: Boolean,
     required: true 
   }

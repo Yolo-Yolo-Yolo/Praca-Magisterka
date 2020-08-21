@@ -58,20 +58,24 @@ export default function SimpleTabs() {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+        <Tabs value={value} onChange={handleChange} aria-label="Zakładki rezerwacji">
+          <Tab label="Prodziekan ds. Nauki" {...a11yProps(0)} />
+          <Tab label="Prodziekan ds. Kształcenia" {...a11yProps(1)} />
+          <Tab label="Prodziekan ds. Studenckich" {...a11yProps(2)} />
+          <Tab label="Prodziekan ds. Ogólnych" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        Item One
+          1
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        Item Four
       </TabPanel>
     </div>
   );

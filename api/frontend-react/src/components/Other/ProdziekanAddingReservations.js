@@ -18,6 +18,7 @@ import PropTypes from "prop-types";
 import pl from "date-fns/locale/pl";
 import moment from 'moment-timezone';
 import uuid from 'react-uuid';
+import { nanoid } from 'nanoid'
 
 moment.tz('Europe/Warsaw');
 registerLocale("pl", pl);
@@ -89,7 +90,7 @@ class ProdziekanAddingReservations extends Component {
             let TimeForLoop2 = new Date(time);
             let TimeForLoopLocaleString = TimeForLoop2.toLocaleString('pl-PL');
             
-            hoursObject.id = uuid();
+            hoursObject.id = nanoid(6);
             hoursObject.hour = TimeForLoopLocaleString;
             this.state.godziny.push({id: hoursObject.id, hour: hoursObject.hour, isBooked: hoursObject.isBooked, isConfirmed: false });
             //console.log("Liczba iteracji:"+ i );

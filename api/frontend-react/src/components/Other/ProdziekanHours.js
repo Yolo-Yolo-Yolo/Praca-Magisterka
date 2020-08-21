@@ -73,7 +73,7 @@ class ProdziekanHours extends Component {
       detailPanel={rowData => {
         return (
           <div>
-              <UserInfo />
+              ID : {rowData.id}
           </div>
         )
       }}

@@ -8,6 +8,7 @@ import style from "react-datepicker/dist/react-datepicker.css";
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 import { addDays } from 'date-fns';
+import ReservationTabs from './../Other/ReservationTabs';
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -33,7 +34,6 @@ class NewReservationBody extends Component {
         this.setState({
           date
         });
-        console.log(setHours(setMinutes(new Date('2020','08','44'), 0), 18));
       }
     render() {
         const {classes} = this.props;
@@ -41,33 +41,11 @@ class NewReservationBody extends Component {
         return (
                 <div className={classes.root}>
                     <Container maxWidth>
-                        <Grid container spacing={3} style={{marginTop:"1rem"}}>
-                            <Grid item xs={6}>
-                            <Paper className={classes.paper}><h1 align="center" style={{color:"black"}}>
-                                        TEST
-                                    </h1></Paper>
-                            </Grid>
-                            <Grid item xs={6}>
-                            <Paper className={classes.paper}><h1 align="center" style={{color:"black"}}>
-                                        TEST
-                                    </h1></Paper>
-                            </Grid>
+                        <Grid container spacing={3} style={{marginTop:"1rem", marginBottom:"1rem"}}>
                             <Grid item xs={12}>
-                            
-                            <DatePicker
-                                dateFormat="dd/MM/yyyy H:mm"
-                                selected={this.state.date}
-                                includeDates={[new Date().getFullYear, addDays(new Date(), 7), addDays(new Date(), -3)]}
-                                onChange={this.handleChange}
-                                showTimeSelect
-                                minTime={setHours(setMinutes(new Date('2020','08','04'), 0), 17)}
-                                maxTime={setHours(setMinutes(new Date('2020','08','04'), 30), 18)}
-                                timeIntervals={5}
-                                excludeTimes={[
-                                    setHours(setMinutes(new Date('2020','08','04'), 5), 17),
-                                    setHours(setMinutes(new Date('2020','08','04'), 10), 18)
-                                ]}
-                            />
+                            <Paper className={classes.paper}>
+                              <ReservationTabs />
+                            </Paper>
                             </Grid>
                         </Grid>
                     </Container>
