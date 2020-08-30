@@ -27,10 +27,11 @@ class ProdziekanAddingReservations extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          do_kogo: " ",
+          do_kogo: "",
           godziny: [],
+          Code: "",
           TemporaryDate: setHours(setMinutes(new Date(), 0), 0),
-          hours: { id : "", hour : "", isBooked : false, isConfirmed: false },
+          hours: { id : "", hour : "", isBooked : false, isConfirmed: false, Code: ""},
           Startdate: setHours(setMinutes(new Date(), 0), 0),
           Enddate: setHours(setMinutes(new Date(), 0), 0),
           StartdateFormatPL: setHours(setMinutes(new Date(), 0), 0),
@@ -83,7 +84,8 @@ class ProdziekanAddingReservations extends Component {
         const EndTime = new Date(this.state.EnddateFormatUS);
 
         const hoursObject = this.state.hours;
-
+        hoursObject.Code = nanoid(12);
+        
         for (let i=0; StartTime.getTime()+i*300000 < EndTime.getTime() ; i++) {
             const TimeForLoop = StartTime;
             const time = TimeForLoop.getTime()+i*300000;
@@ -92,7 +94,8 @@ class ProdziekanAddingReservations extends Component {
             
             hoursObject.id = nanoid(6);
             hoursObject.hour = TimeForLoopLocaleString;
-            this.state.godziny.push({id: hoursObject.id, hour: hoursObject.hour, isBooked: hoursObject.isBooked, isConfirmed: false });
+            
+            this.state.godziny.push({id: hoursObject.id, hour: hoursObject.hour, isBooked: hoursObject.isBooked, isConfirmed: false, Code: hoursObject.Code });
             //console.log("Liczba iteracji:"+ i );
         }
         
@@ -103,7 +106,8 @@ class ProdziekanAddingReservations extends Component {
           EndDate: this.state.EnddateFormatUS,
           StartdateFormatPL: this.state.StartdateFormatPL,
           EndDateFormatPL: this.state.EnddateFormatPL,
-          godziny: this.state.godziny
+          godziny: this.state.godziny,
+          Code: hoursObject.Code
         };
     
         //Add item via addItem action

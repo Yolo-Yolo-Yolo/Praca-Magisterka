@@ -3,7 +3,8 @@ import {
     GET_MY_RESERVATION_HOURS,
     ADD_RESERVATION_HOURS,
     DELETE_RESERVATION_HOURS,
-    RESERVATION_HOURS_LOADING
+    RESERVATION_HOURS_LOADING,
+    UPDATE_RESERVATION_HOURS
   } from "../actions/types";
 
   const initialState = {
@@ -26,6 +27,12 @@ import {
           reservationhours: action.payload,
           loading: false
         };
+        case UPDATE_RESERVATION_HOURS:
+          return {
+            ...state,
+            reservationhours: action.payload,
+            loading: false
+          };
       case DELETE_RESERVATION_HOURS:
         return {
           ...state,

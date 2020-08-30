@@ -3,33 +3,19 @@ const Schema = mongoose.Schema;
 
 // Creating Schema
 const ReservationSchema = new Schema({
-  email: {
+  id_terminu: {
     type: String,
-    required: true,
-    unique: true
-  },
-  album: {
-    type: Number,
-    required: true,
-    unique: true
-  },
-  imie: {
-    type: String,
-    required: true
-  },
-  nazwisko: {
-    type: String,
-    required: true
-  },
-  telefon: {
-    type: Number,
-    required: true
+    required: true 
   },
   date: {
     type: String,
     required: true
   },
   do_kogo: {
+    type: String,
+    required: true 
+  },
+  temat: {
     type: String,
     required: true 
   },
@@ -41,10 +27,10 @@ const ReservationSchema = new Schema({
     type: Boolean,
     required: true 
   },
-  id_terminu: {
-    type: Boolean,
-    required: true 
-  }
+  user: {
+    type: Object,
+    required: true
+  },
 });
 
 module.exports = Reservation = mongoose.model('Reservation', ReservationSchema);

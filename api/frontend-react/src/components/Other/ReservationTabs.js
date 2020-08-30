@@ -6,7 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-
+import NewReservation from './NewReservation';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -66,16 +66,16 @@ export default function SimpleTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-          1
+          <NewReservation who="Prodziekan ds. Nauki" />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+         <NewReservation who="Prodziekan ds. Kształcenia" />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+          <NewReservation who="Prodziekan ds. Studenckich" />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Item Four
+          <NewReservation who="Prodziekan ds. Ogólnych" />
       </TabPanel>
     </div>
   );

@@ -4,7 +4,8 @@ import {
     GET_MY_RESERVATION_HOURS,
     ADD_RESERVATION_HOURS,
     DELETE_RESERVATION_HOURS,
-    RESERVATION_HOURS_LOADING
+    RESERVATION_HOURS_LOADING,
+    UPDATE_RESERVATION_HOURS
 } from "./types";
 import { tokenConfig } from "./authActions";
 import { returnErrors } from "./errorActions";
@@ -55,6 +56,18 @@ export const getReservationHours = () => dispatch => {
       dispatch({
         type: ADD_RESERVATION_HOURS,
         payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
+  };
+
+  export const updateReservationHours = (id, id2) => (dispatch, getState) => {
+    axios.post(`/reservationshours/upgrade/${id}/${id2}`, tokenConfig(getState)).then(res =>
+      dispatch({
+        type: UPDATE_RESERVATION_HOURS,
+        payload: (id, id2)
       })
     )
     .catch(err =>

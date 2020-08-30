@@ -8,6 +8,7 @@ const information = require('./routes/information');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
 const reservationshours = require('./routes/reservationshours');
+const reservations = require('./routes/reservations');
 //Loading app
 const app = express();
 const port = process.env.PORT || 5000;
@@ -29,7 +30,7 @@ app.use('/information',information);
 app.use('/users', users);
 app.use('/auth', auth);
 app.use('/reservationshours', reservationshours);
-
+app.use('/reservations', reservations);
 // Serve static assets in production HEROKU UPLOAD
 if(process.env.NODE_ENV === 'production') {
   //Set static folder

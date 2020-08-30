@@ -23,6 +23,10 @@ const ReservationHoursSchema = new Schema({
     type: String,
     required: true
   },
+  Code: {
+    type: String,
+    required: true
+  },
   godziny: {
     type: Object,
     required: true
