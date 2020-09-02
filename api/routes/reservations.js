@@ -9,12 +9,14 @@ const Reservation = require("../models/Reservation");
 router.post("/new", auth, (req, res) => {
     const newReservation = new Reservation({
         id_terminu: req.body.id_terminu,
+        Code: req.body.Code,
         do_kogo: req.body.do_kogo,
         temat: req.body.temat,
         opis: req.body.opis,
         potwierdzona: req.body.potwierdzona,
         date: req.body.date,
-        user: req.body.user
+        user: req.body.user,
+        album: req.body.album
     });
     newReservation.save().then(Reservation => res.json(Reservation));
   });
@@ -33,10 +35,16 @@ router.post("/new", auth, (req, res) => {
   });
 
   router.get("/:album", (req, res) => {
-    Reservation.find({album: req.params.album})
-      .sort({ date: -1 })
-      .then(items => res.json(items)); 
-  });
-  
+    Reservation.find(
+      {album : req.params.album}
+    )
+  .then(items => res.json(items));
+});
+router.get("/find/:id_terminu", (req, res) => {
+  Reservation.find(
+    {id_terminu : req.params.id_terminu}
+  )
+.then(items => res.json(items));
+});
 
 module.exports = router;

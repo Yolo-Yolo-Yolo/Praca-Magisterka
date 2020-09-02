@@ -4,6 +4,7 @@ import errorReducer from './errorReducer';
 import authReducer from './authReducer';
 import allusersReducer from './allusersReducer';
 import reservationhoursReducer from './reservationhoursReducer';
+import reservationsReducer from './reservationsReducer';
 
 export default combineReducers({
     allusers: allusersReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
     error: errorReducer,
     auth: authReducer,
     reservationhours: reservationhoursReducer,
+    reservations: reservationsReducer,
 });

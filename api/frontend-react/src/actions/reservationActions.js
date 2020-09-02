@@ -37,6 +37,21 @@ export const getReservations = () => dispatch => {
         dispatch(returnErrors(err.response.data, err.response.status))
       );
   };
+
+  export const getReservationInfo = id_terminu => dispatch => {
+    dispatch(setReservationsLoading());
+    axios
+      .get(`/reservations/find/${id_terminu}`)
+      .then(res =>
+        dispatch({
+          type: GET_MY_RESERVATIONS,
+          payload: res.data
+        })
+      )
+      .catch(err =>
+        dispatch(returnErrors(err.response.data, err.response.status))
+      );
+  };
   
   export const deleteReservation = id => (dispatch, getState) => {
     axios.delete(`/reservations/delete/${id}`, tokenConfig(getState)).then(res =>

@@ -75,6 +75,18 @@ export const getReservationHours = () => dispatch => {
     );
   };
 
+  export const downgradeReservationHours = (id, id2) => (dispatch, getState) => {
+    axios.post(`/reservationshours/downgrade/${id}/${id2}`, tokenConfig(getState)).then(res =>
+      dispatch({
+        type: UPDATE_RESERVATION_HOURS,
+        payload: (id, id2)
+      })
+    )
+    .catch(err =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
+  };
+
   export const setReservationHoursLoading = () => {
     return {
       type: RESERVATION_HOURS_LOADING

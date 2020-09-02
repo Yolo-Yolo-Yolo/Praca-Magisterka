@@ -18,34 +18,36 @@ import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import { connect } from "react-redux";
 import {
-    deleteReservationHours,
-    getMyReservationHours
+    deleteReservation,
+    getMyReservations
+  } from "../../actions/reservationActions";
+  import {
+    downgradeReservationHours
   } from "../../actions/reservationhoursActions";
   import PropTypes from "prop-types";
-import ProdziekanReservationInfo from './ProdziekanReservationInfo';
+  import ReservationInfo from "./ReservationInfo.js";
 
-class ProdziekanHours extends Component {
+class ProdziekanReservationHours extends Component {
 
   static propTypes = {
-        reservationhours: PropTypes.object.isRequired,
+        reservations: PropTypes.object.isRequired,
         auth: PropTypes.object.isRequired
       };
 
       componentDidMount() {
         const { user } = this.props.auth;
-        this.props.getMyReservationHours(user.rola);
+        this.props.getMyReservations(user.album);
       };
-
-        onDeleteClick = id => {
-            this.props.deleteReservationHours(id);
+      handleModal = () => {
+        console.log("Modal do something")
+      }
+        onDeleteClick = rowData => {
+          this.props.downgradeReservationHours(rowData.Code,rowData.id_terminu);
+          this.props.deleteReservation(rowData._id);
         };
  
   render() {
-    const {reservationhours} = this.props.reservationhours;
-    //const godziny3 = Object.assign(...reservationhours.map(d => ({[d[0]]: d[1]})));
-    const hours = reservationhours.flatMap(({ godziny }) => godziny)
-    console.log(hours);
-
+    const {reservations} = this.props.reservations;
     const tableIcons = {
         Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
         Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
@@ -69,31 +71,32 @@ class ProdziekanHours extends Component {
       <div style={{ maxWidth: "100%" }}>
         <MaterialTable
         icons={tableIcons}
-      title="Moje godziny przyjęć studentów"
+      title="Moje rezerwacje"
       detailPanel={rowData => {
         return (
           <div>
-              <ProdziekanReservationInfo reservation={rowData.id} />
+              <ReservationInfo reservation={rowData} />
           </div>
         )
       }}
-      columns={[ 
+      columns={[
         { 
-            title: 'Data Wizyty', 
-            field: 'hour' 
+            title: 'Do Kogo', 
+            field: 'do_kogo' 
         },
         { 
-            title: 'Zajęta', 
-            field: 'isBooked',
-            type: 'boolean' 
-        },
-        {
-            title: 'Potwierdzona',
-            field: 'isConfirmed',
-            type: 'boolean'
+            title: 'Godzina', 
+            field: 'date' 
         },
       ]}
-      data={hours}
+      data={reservations}
+      actions={[
+        {
+          icon: () => <DeleteOutline />,
+          tooltip: 'Usuń Rezerwacje',
+          onClick: (event, rowData) => this.onDeleteClick(rowData),
+        }
+      ]}
       options={{
         actionsColumnIndex: -1
       }}
@@ -142,7 +145,6 @@ class ProdziekanHours extends Component {
             searchTooltip: "Szukaj",
             searchPlaceholder: "Szukaj"
           }
-          
     }}
     />
       </div>
@@ -152,10 +154,10 @@ class ProdziekanHours extends Component {
 
 const mapStatetoProps = state => ({
     auth: state.auth,
-    reservationhours: state.reservationhours
+    reservations: state.reservations
   });
 
 
-  export default connect(mapStatetoProps, { getMyReservationHours, deleteReservationHours })(
-    ProdziekanHours
+  export default connect(mapStatetoProps, { downgradeReservationHours, getMyReservations, deleteReservation })(
+    ProdziekanReservationHours
   );

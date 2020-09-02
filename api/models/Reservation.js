@@ -7,6 +7,10 @@ const ReservationSchema = new Schema({
     type: String,
     required: true 
   },
+  Code: {
+    type: String,
+    required: true 
+  },
   date: {
     type: String,
     required: true
@@ -28,7 +32,11 @@ const ReservationSchema = new Schema({
     required: true 
   },
   user: {
-    type: Object,
+    type: Array,
+    required: true
+  },
+  album: {
+    type: Number,
     required: true
   },
 });

@@ -91,11 +91,12 @@ class ProdziekanAddingReservations extends Component {
             const time = TimeForLoop.getTime()+i*300000;
             let TimeForLoop2 = new Date(time);
             let TimeForLoopLocaleString = TimeForLoop2.toLocaleString('pl-PL');
-            
+            let TimeForLoopLocaleString2 = TimeForLoop2.toLocaleString('en-US');
             hoursObject.id = nanoid(6);
             hoursObject.hour = TimeForLoopLocaleString;
+            hoursObject.hourUS = TimeForLoopLocaleString2;
             
-            this.state.godziny.push({id: hoursObject.id, hour: hoursObject.hour, isBooked: hoursObject.isBooked, isConfirmed: false, Code: hoursObject.Code });
+            this.state.godziny.push({id: hoursObject.id, hour: hoursObject.hour, hourUS: hoursObject.hourUS, isBooked: hoursObject.isBooked, isConfirmed: false, Code: hoursObject.Code });
             //console.log("Liczba iteracji:"+ i );
         }
         

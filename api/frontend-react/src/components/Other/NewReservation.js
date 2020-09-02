@@ -38,7 +38,6 @@ import {
 } from "reactstrap";
 import Button from '@material-ui/core/Button';
 
-
 class NewReservation extends Component {
   state = {
     modal: false,
@@ -54,6 +53,7 @@ class NewReservation extends Component {
     potwierdzona:false,
     id_terminu:"",
     id_przyjec:"",
+    user:[],
   };
 
   static propTypes = {
@@ -66,9 +66,11 @@ class NewReservation extends Component {
           modal: !this.state.modal
         });
       };
+      reload = () => {
+        window.location.reload(false)
+        };
       componentDidMount() {
         const { user } = this.props.auth;
-        const {reservationhours} = this.props.reservationhours;
         this.setState({
           email: user.email,
           album: user.album,
@@ -88,8 +90,8 @@ class NewReservation extends Component {
             date: rowData.hour,
             id_przyjec: rowData.Code,
             });
-            console.log(rowData.Code)
           this.toggle();
+          
         };
 
         onSubmit = e => {
@@ -97,36 +99,39 @@ class NewReservation extends Component {
 
           const user = {
             email: this.state.email,
-            album: this.state.album,
             imie: this.state.imie,
             nazwisko: this.state.nazwisko,
             telefon: this.state.telefon,
           };
-      
+          this.state.user.push(user);
+
           const newReservation = {
             id_terminu: this.state.id_terminu,
+            Code: this.state.id_przyjec,
             do_kogo: this.state.do_kogo,
             temat: this.state.temat,
             opis: this.state.opis,
             potwierdzona: this.state.potwierdzona,
             date: this.state.date,
-            user: user,
+            user: this.state.user,
+            album: this.state.album,
           };
       
           //Add Reservation via addReservation action
-          this.props.addReservation(newReservation);
           this.props.updateReservationHours(this.state.id_przyjec,this.state.id_terminu);
+          this.props.addReservation(newReservation);
           // Close Modal
           this.toggle();
+          this.reload();        
         };
  
   render() {
     const {reservationhours} = this.props.reservationhours;
-    //const godziny3 = Object.assign(...reservationhours.map(d => ({[d[0]]: d[1]})));
-    const hours = reservationhours.flatMap(({ godziny }) => godziny)
-    const test = reservationhours.map(({_id}) => _id)
-    console.log(test);
-    
+    const hours = reservationhours.flatMap(({ godziny }) => godziny);
+    //Filtering booked appointments
+    const hours2 = hours.filter(hours => hours.isBooked === false);
+    //Filtering date in future
+    const hours3 = hours2.filter(hours => new Date(hours.hourUS) > new Date());
 
     const tableIcons = {
         Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -192,7 +197,7 @@ class NewReservation extends Component {
             type: 'boolean' 
         }
       ]}
-      data={hours}
+      data={hours3}
       actions={[
         {
           icon: () => <AddCircleIcon style={{ color: green[500] }} />,
