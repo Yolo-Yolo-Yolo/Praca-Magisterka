@@ -31,7 +31,7 @@ router.post("/", (req, res) => {
         //else return res.status(200).json({ msg: 'Zalogowano pomyślnie'});
 
         jwt.sign(
-            { id: user.id },
+            { id: user.id, isAdmin: user.isAdmin },
             config.get("jwtSecret"),
             { expiresIn: 3600 },
             (err, token) => {

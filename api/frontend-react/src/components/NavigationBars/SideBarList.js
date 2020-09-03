@@ -49,21 +49,6 @@ class SideBarList extends Component {
             <Divider />
             <List subheader={
             <ListSubheader component="div" id="nested-list-subheader">
-            <strong>USER</strong>
-            </ListSubheader>
-             }>
-                <ListItem button component="a" href="/rezerwacja">
-                <ListItemIcon><AddRoundedIcon /></ListItemIcon>
-                <ListItemText primary="Nowa Rezerwacja" />
-                </ListItem>
-                <ListItem button component="a" href="/moje_rezerwacje">
-                <ListItemIcon><EventSeatRoundedIcon /></ListItemIcon>
-                <ListItemText primary="Moje Wizyty" />
-                </ListItem>
-            </List>
-            <Divider />
-            <List subheader={
-            <ListSubheader component="div" id="nested-list-subheader">
             <strong>ALL</strong>
             </ListSubheader>
              }>

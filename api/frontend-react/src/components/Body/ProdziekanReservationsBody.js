@@ -29,18 +29,18 @@ class ProdziekanReservationsBody extends Component {
                 <div className={classes.root}>
                     <Container maxWidth>
                         <Grid container spacing={3} style={{marginTop:"1rem"}}>
-                            <Grid item xs={3}>
+                            <Grid item xs={4}>
                             <Paper className={classes.paper}>
                             <ProdziekanAddingReservations />
                             </Paper>
                             </Grid>
-                            <Grid item xs={9}>
-                            <Paper className={classes.paper}>
+                            <Grid item xs={8}>
+                            <Paper className={classes.paper} style={{backgroundColor:"#757de8"}}>
                                         <ProdziekanReservationHours />
                                         </Paper>
                             </Grid>
                             <Grid item xs={12}>
-                                <Paper className={classes.paper} style={{marginBottom:"1rem"}}>
+                                <Paper className={classes.paper} style={{marginBottom:"1rem", backgroundColor:"#757de8"}}>
                                     <ProdziekanHours />
                                 </Paper>
                             </Grid>

@@ -11,6 +11,13 @@ import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import PropTypes from "prop-types";
 import {getReservationInfo} from "../../actions/reservationActions";
 import { connect } from "react-redux";
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import AssignmentLateIcon from '@material-ui/icons/AssignmentLate';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import PhoneIcon from '@material-ui/icons/Phone';
+import LabelImportantIcon from '@material-ui/icons/LabelImportant';
+
+
 
 const styles = theme => ({
     root: {
@@ -48,22 +55,22 @@ class ProdziekanReservationInfo extends Component {
                             <Grid item xs={12}>
                                            
                                 <ListItem style={{ backgroundColor:"#eceff1"}}>
-                                <ListItemIcon><EmailIcon /></ListItemIcon>
-                                <ListItemText primary="Kod Rezerwacji" secondary={id_terminu} />
+                                <ListItemIcon><VpnKeyIcon /></ListItemIcon>
+                                <ListItemText key={id_terminu} primary="Kod Rezerwacji" secondary={id_terminu} />
                                 </ListItem>
                                 <Divider />
                                 <ListItem style={{ backgroundColor:"#fafafa"}}>
-                                <ListItemIcon><EmojiPeopleIcon /></ListItemIcon>
-                                <ListItemText primary="Temat"  secondary={temat} />
+                                <ListItemIcon><AssignmentLateIcon /></ListItemIcon>
+                                <ListItemText key={temat} primary="Temat"  secondary={temat} />
                                 </ListItem>
                                 <Divider />
                                 <ListItem style={{ backgroundColor:"#eceff1"}}>
-                                <ListItemIcon><DirectionsRunIcon /></ListItemIcon>
-                                <ListItemText primary="Opis" secondary={opis} />
+                                <ListItemIcon><FormatListBulletedIcon /></ListItemIcon>
+                                <ListItemText key={opis} primary="Opis" secondary={opis} />
                                 </ListItem>
                                 <ListItem style={{ backgroundColor:"#fafafa"}}>
-                                <ListItemIcon><DirectionsRunIcon /></ListItemIcon>
-                                <ListItemText primary="Album" secondary={album} />
+                                <ListItemIcon><LabelImportantIcon /></ListItemIcon>
+                                <ListItemText key={album} primary="Nr Albumu" secondary={album} />
                                 </ListItem>
                             </Grid>
                         </Grid>
@@ -73,20 +80,20 @@ class ProdziekanReservationInfo extends Component {
                             <Grid item xs={12}>            
                                 <ListItem style={{ backgroundColor:"#eceff1"}}>
                                 <ListItemIcon><EmailIcon /></ListItemIcon>
-                                <ListItemText primary="Email" secondary={email} />
+                                <ListItemText key={email} primary="Email" secondary={email} />
                                 </ListItem>
                                 <ListItem style={{ backgroundColor:"#fafafa"}}>
                                 <ListItemIcon><EmojiPeopleIcon /></ListItemIcon>
-                                <ListItemText primary="Imię"  secondary={imie} />
+                                <ListItemText key={imie} primary="Imię"  secondary={imie} />
                                 </ListItem>
                                 <Divider />
                                 <ListItem style={{ backgroundColor:"#eceff1"}}>
                                 <ListItemIcon><DirectionsRunIcon /></ListItemIcon>
-                                <ListItemText primary="Nazwisko" secondary={nazwisko} />
+                                <ListItemText key={nazwisko} primary="Nazwisko" secondary={nazwisko} />
                                 </ListItem>
                                 <ListItem style={{ backgroundColor:"#fafafa"}}>
-                                <ListItemIcon><DirectionsRunIcon /></ListItemIcon>
-                                <ListItemText primary="Telefon" secondary={telefon} />
+                                <ListItemIcon><PhoneIcon /></ListItemIcon>
+                                <ListItemText key={telefon} primary="Telefon" secondary={telefon} />
                                 </ListItem>
                             </Grid>
                         </Grid>

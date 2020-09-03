@@ -27,7 +27,7 @@ class MyReservationsBody extends Component {
                     <Container maxWidth>
                         <Grid container spacing={3} style={{marginTop:"1rem"}}>
                             <Grid item xs={12}>
-                            <Paper className={classes.paper} style={{marginBottom:"1rem"}}>
+                            <Paper className={classes.paper} style={{marginBottom:"1rem", backgroundColor:"#757de8"}}>
                                        <MyReservations /> 
                             </Paper>
                             </Grid>

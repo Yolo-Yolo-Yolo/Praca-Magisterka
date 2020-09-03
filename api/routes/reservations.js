@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const auth = require('../middleware/auth')
-
+const auth = require('../middleware/auth');
+const authAdmin = require('../middleware/auth');
 //Reservation Model
 const Reservation = require("../models/Reservation");
 
@@ -28,7 +28,7 @@ router.post("/new", auth, (req, res) => {
     .catch(err => res.status(404).json({ success: false }));
   });
 
-  router.get("/all", (req, res) => {
+  router.get("/all", authAdmin, (req, res) => {
     Reservation.find()
       .sort({ date: -1 })
       .then(items => res.json(items)); 

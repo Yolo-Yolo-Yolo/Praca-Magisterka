@@ -9,10 +9,10 @@ import {
 import { tokenConfig } from "./authActions";
 import { returnErrors } from "./errorActions";
 
-export const getReservations = () => dispatch => {
+export const getReservations = () => (dispatch, getState) => {
     dispatch(setReservationsLoading());
     axios
-      .get("/reservations/all")
+      .get("/reservations/all", tokenConfig(getState))
       .then(res =>
         dispatch({
           type: GET_RESERVATIONS,

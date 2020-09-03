@@ -5,10 +5,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import EmailIcon from '@material-ui/icons/Email';
-import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
-import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
-
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import AssignmentLateIcon from '@material-ui/icons/AssignmentLate';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 
 const styles = theme => ({
     root: {
@@ -23,7 +22,7 @@ const styles = theme => ({
     });
 
 
-class UserInfo extends Component {
+class ReservationInfo extends Component {
 
     render() {
         const reservation = this.props.reservation
@@ -37,17 +36,17 @@ class UserInfo extends Component {
                             <Grid item xs={12}>
                                            
                                 <ListItem style={{ backgroundColor:"#eceff1"}}>
-                                <ListItemIcon><EmailIcon /></ListItemIcon>
+                                <ListItemIcon><VpnKeyIcon /></ListItemIcon>
                                 <ListItemText primary="Kod Rezerwacji" secondary={reservation.id_terminu} />
                                 </ListItem>
                                 <Divider />
                                 <ListItem style={{ backgroundColor:"#fafafa"}}>
-                                <ListItemIcon><EmojiPeopleIcon /></ListItemIcon>
+                                <ListItemIcon><AssignmentLateIcon /></ListItemIcon>
                                 <ListItemText primary="Temat"  secondary={reservation.temat} />
                                 </ListItem>
                                 <Divider />
                                 <ListItem style={{ backgroundColor:"#eceff1"}}>
-                                <ListItemIcon><DirectionsRunIcon /></ListItemIcon>
+                                <ListItemIcon><FormatListBulletedIcon /></ListItemIcon>
                                 <ListItemText primary="Opis" secondary={reservation.opis} />
                                 </ListItem>
                             </Grid>
@@ -58,4 +57,4 @@ class UserInfo extends Component {
     }
 }
 
-export default withStyles(styles)(UserInfo)
+export default withStyles(styles)(ReservationInfo)

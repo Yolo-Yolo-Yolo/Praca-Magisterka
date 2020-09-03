@@ -17,7 +17,6 @@ import { addReservationHours } from "../../actions/reservationhoursActions";
 import PropTypes from "prop-types";
 import pl from "date-fns/locale/pl";
 import moment from 'moment-timezone';
-import uuid from 'react-uuid';
 import { nanoid } from 'nanoid'
 
 moment.tz('Europe/Warsaw');

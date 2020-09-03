@@ -19,7 +19,7 @@ import ViewColumn from '@material-ui/icons/ViewColumn';
 import { connect } from "react-redux";
 import {
     deleteReservation,
-    getMyReservations
+    getReservations
   } from "../../actions/reservationActions";
   import {
     downgradeReservationHours
@@ -27,7 +27,7 @@ import {
   import PropTypes from "prop-types";
   import ReservationInfo from "./ReservationInfo.js";
 
-class ProdziekanReservationHours extends Component {
+class AllReservations extends Component {
 
   static propTypes = {
         reservations: PropTypes.object.isRequired,
@@ -35,10 +35,8 @@ class ProdziekanReservationHours extends Component {
       };
 
       componentDidMount() {
-        const { user } = this.props.auth;
-        this.props.getMyReservations(user.album);
+        this.props.getReservations();
       };
-
         onDeleteClick = rowData => {
           this.props.downgradeReservationHours(rowData.Code,rowData.id_terminu);
           this.props.deleteReservation(rowData._id);
@@ -69,7 +67,7 @@ class ProdziekanReservationHours extends Component {
       <div style={{ maxWidth: "100%" }}>
         <MaterialTable
         icons={tableIcons}
-      title="Moje rezerwacje"
+      title="Wszystkie Rezerwacje do Prodziekanów"
       detailPanel={rowData => {
         return (
           <div>
@@ -156,6 +154,6 @@ const mapStatetoProps = state => ({
   });
 
 
-  export default connect(mapStatetoProps, { downgradeReservationHours, getMyReservations, deleteReservation })(
-    ProdziekanReservationHours
+  export default connect(mapStatetoProps, { downgradeReservationHours, getReservations, deleteReservation })(
+    AllReservations
   );
