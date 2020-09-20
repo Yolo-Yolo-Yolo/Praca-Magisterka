@@ -23,7 +23,7 @@ export default function MediaCard() {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea href="https://syllabuskrk.agh.edu.pl/2019-2020/pl/treasuries/academy_units/offer">
+      <CardActionArea>
         <CardMedia
           className={classes.media}
           image={Syllabus}

@@ -42,6 +42,7 @@ class ProdziekanReservationHours extends Component {
  
   render() {
     const {reservationhours} = this.props.reservationhours;
+    const hours3 = reservationhours.filter(reservationhours => new Date(reservationhours.EndDate) > new Date());
     const tableIcons = {
         Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
         Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
@@ -80,7 +81,7 @@ class ProdziekanReservationHours extends Component {
             field: 'EndDateFormatPL'
         },
       ]}
-      data={reservationhours}
+      data={hours3}
       actions={[
         {
           icon: () => <DeleteOutline />,

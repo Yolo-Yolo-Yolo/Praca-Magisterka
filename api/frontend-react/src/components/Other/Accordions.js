@@ -68,7 +68,7 @@ export default function SimpleAccordion() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Tak, w innym wypadku zostanie ona usunięta 30 minut przed spotkaniem.
+            Tak, w innym wypadku nie będzie ważna.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -112,116 +112,11 @@ export default function SimpleAccordion() {
           id="panel2a-header"
           className={classes.headingContent}
         >
-          <Typography className={classes.heading}><b>TEST</b></Typography>
+          <Typography className={classes.heading}><b>Dlaczego strona się ciągle ładuje ?</b></Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            test
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-          className={classes.headingContent}
-        >
-          <Typography className={classes.heading}><b>TEST</b></Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            test
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-          className={classes.headingContent}
-        >
-          <Typography className={classes.heading}><b>TEST</b></Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            test
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-          className={classes.headingContent}
-        >
-          <Typography className={classes.heading}><b>TEST</b></Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            test
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-          className={classes.headingContent}
-        >
-          <Typography className={classes.heading}><b>TEST</b></Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            test
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-          className={classes.headingContent}
-        >
-          <Typography className={classes.heading}><b>TEST</b></Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            test
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-          className={classes.headingContent}
-        >
-          <Typography className={classes.heading}><b>TEST</b></Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            test
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-          className={classes.headingContent}
-        >
-          <Typography className={classes.heading}><b>TEST</b></Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            test
+            Jeśli strona się ciągle ładuje to znaczy, że twoja sesja wygasła.
           </Typography>
         </AccordionDetails>
       </Accordion>

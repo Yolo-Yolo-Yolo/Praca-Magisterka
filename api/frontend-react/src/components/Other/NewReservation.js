@@ -163,7 +163,7 @@ class NewReservation extends Component {
                 <Input
                   type="text"
                   name="temat"
-                  placeholder="Dodaj tytuł"
+                  placeholder="Dodaj temat"
                   onChange={this.onChange}
                 ></Input>
               </FormGroup>

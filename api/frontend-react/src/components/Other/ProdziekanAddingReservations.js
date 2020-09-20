@@ -18,6 +18,7 @@ import PropTypes from "prop-types";
 import pl from "date-fns/locale/pl";
 import moment from 'moment-timezone';
 import { nanoid } from 'nanoid'
+import { Input } from "reactstrap";
 
 moment.tz('Europe/Warsaw');
 registerLocale("pl", pl);
@@ -26,6 +27,7 @@ class ProdziekanAddingReservations extends Component {
     constructor(props) {
         super(props);
         this.state = {
+          minut: 5,
           do_kogo: "",
           godziny: [],
           Code: "",
@@ -73,6 +75,9 @@ class ProdziekanAddingReservations extends Component {
         this.setState({EnddateFormatPL});
         this.setState({EnddateFormatUS});
       }
+      onChange = e => {
+        this.setState({ [e.target.name]: e.target.value });
+      };
 
       onSubmit = e => {
         e.preventDefault();
@@ -84,10 +89,11 @@ class ProdziekanAddingReservations extends Component {
 
         const hoursObject = this.state.hours;
         hoursObject.Code = nanoid(12);
-        
-        for (let i=0; StartTime.getTime()+i*300000 < EndTime.getTime() ; i++) {
+        const minut = this.state.minut;
+
+        for (let i=0; StartTime.getTime()+i*(60000*minut) < EndTime.getTime() ; i++) {
             const TimeForLoop = StartTime;
-            const time = TimeForLoop.getTime()+i*300000;
+            const time = TimeForLoop.getTime()+i*(60000*minut);
             let TimeForLoop2 = new Date(time);
             let TimeForLoopLocaleString = TimeForLoop2.toLocaleString('pl-PL');
             let TimeForLoopLocaleString2 = TimeForLoop2.toLocaleString('en-US');
@@ -152,11 +158,20 @@ class ProdziekanAddingReservations extends Component {
                 </ListItem>
                 <Divider />
                 <ListItem>
+                <ListItemIcon><SnoozeIcon /></ListItemIcon>
+                <ListItemText primary="Co ile minut wejście: "  secondary={<Input
+                  type="number"
+                  name="minut"
+                  id="minut"
+                  placeholder="5"
+                  onChange={this.onChange}
+                ></Input>} />
+                </ListItem>
                 
-                <ListItemText primary="" secondary={<Button color="primary" onClick={this.onSubmit} variant="contained" style={{ marginLeft: "3.5rem" }} block="true">
+                
+                <ListItemText primary="" secondary={<Button color="primary" onClick={this.onSubmit} variant="contained" style={{ marginLeft: "2rem" }} block="true">
                   Dodaj Nowy Dyżur
                 </Button>} />
-                </ListItem>
             </List>
             </div>   
         );

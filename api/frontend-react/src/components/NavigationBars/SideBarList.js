@@ -113,9 +113,13 @@ class SideBarList extends Component {
                 <strong>DEAN</strong>
                 </ListSubheader>
                  }>
-                    <ListItem button component="a" href="prodziekan/moje_rezerwacje">
+                    <ListItem button component="a" href="/prodziekan/moje_rezerwacje">
                     <ListItemIcon><EventSeatRoundedIcon /></ListItemIcon>
                     <ListItemText primary="Rezerwacje" />
+                    </ListItem>
+                    <ListItem button component="a" href="/admin/ogloszenia">
+                    <ListItemIcon><AssignmentLateRoundedIcon /></ListItemIcon>
+                    <ListItemText primary="Ogłoszenia" />
                     </ListItem>
                 </List>
                 <Divider />

@@ -13,7 +13,7 @@ class AdminInformation extends Component {
         const { user, isAuthenticated } = this.props.auth;
         return (
             <div>
-                {isAuthenticated&&user.isAdmin ? <AdminInformations /> : <Loading /> }
+                {isAuthenticated&&(user.isAdmin||user.rola!=="Użytkownik") ? <AdminInformations /> : <Loading /> }
             </div>
         );
     }

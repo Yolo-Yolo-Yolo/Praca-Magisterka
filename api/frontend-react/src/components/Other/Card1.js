@@ -23,7 +23,7 @@ export default function MediaCard() {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea href="https://www.imir.agh.edu.pl">
+      <CardActionArea>
         <CardMedia
           className={classes.media}
           image={WIMIR}

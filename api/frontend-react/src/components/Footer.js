@@ -7,6 +7,7 @@ import Card1 from "./Other/Card1";
 import Card2 from "./Other/Card2";
 import Card3 from "./Other/Card3";
 import Card4 from "./Other/Card4";
+import Test from "./Other/Test";
 const styles = theme => ({
   root: {
       flexGrow: 1,
@@ -50,7 +51,7 @@ class Footer extends Component {
                         </Grid>
                         </Grid>
                     </Container>
-            </div>   
+            </div>  
     );
   }
 }
