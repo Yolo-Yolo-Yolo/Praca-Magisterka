@@ -3,7 +3,8 @@ import {
     GET_MY_RESERVATIONS,
     ADD_RESERVATION,
     DELETE_RESERVATION,
-    RESERVATIONS_LOADING
+    RESERVATIONS_LOADING,
+    UPDATE_RESERVATION
   } from "../actions/types";
 
   const initialState = {
@@ -41,6 +42,12 @@ import {
           ...state,
           loading: true
       };
+      case UPDATE_RESERVATION:
+          return {
+            ...state,
+            reservations: action.payload,
+            loading: false
+          };
         default:
       return state;
   }

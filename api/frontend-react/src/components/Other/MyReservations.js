@@ -19,13 +19,17 @@ import ViewColumn from '@material-ui/icons/ViewColumn';
 import { connect } from "react-redux";
 import {
     deleteReservation,
-    getMyReservations
+    getMyReservations,
+    ConfirmReservation
   } from "../../actions/reservationActions";
   import {
-    downgradeReservationHours
+    downgradeReservationHours,
+    confirmReservationHours
   } from "../../actions/reservationhoursActions";
   import PropTypes from "prop-types";
   import ReservationInfo from "./ReservationInfo.js";
+  import AddCircleIcon from '@material-ui/icons/AddCircle';
+  import { green } from '@material-ui/core/colors';
 
 class ProdziekanReservationHours extends Component {
 
@@ -33,6 +37,9 @@ class ProdziekanReservationHours extends Component {
         reservations: PropTypes.object.isRequired,
         auth: PropTypes.object.isRequired
       };
+      reload = () => {
+        window.location.reload(false)
+        };
 
       componentDidMount() {
         const { user } = this.props.auth;
@@ -43,9 +50,19 @@ class ProdziekanReservationHours extends Component {
           this.props.downgradeReservationHours(rowData.Code,rowData.id_terminu);
           this.props.deleteReservation(rowData._id);
         };
+        onConfirmClick = rowData => {
+          console.log(new Date(rowData.dateUS));
+          console.log(new Date(new Date().getTime() + 30*60000));
+          if (new Date(rowData.dateUS) < (new Date(new Date().getTime() + 30*60000))) {
+          this.props.confirmReservationHours(rowData.Code,rowData.id_terminu);
+          this.props.ConfirmReservation(rowData._id);
+          this.reload();
+          }
+        };
  
   render() {
     const {reservations} = this.props.reservations;
+    console.log(reservations);
     const tableIcons = {
         Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
         Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
@@ -86,9 +103,20 @@ class ProdziekanReservationHours extends Component {
             title: 'Godzina', 
             field: 'date' 
         },
+        { 
+          title: 'Potwierdzona', 
+          field: 'potwierdzona',
+          type: 'boolean'  
+        },
+
       ]}
       data={reservations}
       actions={[
+        {
+          icon: () => <AddCircleIcon style={{ color: green[500] }} />,
+          tooltip: 'Potwierdź rezerwację',
+          onClick: (event, rowData) => this.onConfirmClick(rowData),
+        },
         {
           icon: () => <DeleteOutline />,
           tooltip: 'Usuń Rezerwacje',
@@ -156,6 +184,6 @@ const mapStatetoProps = state => ({
   });
 
 
-  export default connect(mapStatetoProps, { downgradeReservationHours, getMyReservations, deleteReservation })(
+  export default connect(mapStatetoProps, { downgradeReservationHours, confirmReservationHours, getMyReservations, deleteReservation, ConfirmReservation })(
     ProdziekanReservationHours
   );

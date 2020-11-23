@@ -11,7 +11,9 @@ import KKolodziejczyk from '../../assets/img/KKolodziejczyk.jpg'
 import MKot from '../../assets/img/MKot.jpg'
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-
+import CancelIcon from '@material-ui/icons/Cancel';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import { green, red } from '@material-ui/core/colors';
 const MultiCarouselPage = () => {
   return (
     <MDBContainer>
@@ -30,7 +32,7 @@ const MultiCarouselPage = () => {
                   <MDBCardBody>
                     <MDBCardTitle style={{fontSize: "17px"}}>Dziekan Wydziału</MDBCardTitle>
                     <MDBCardText style={{fontSize: "13px"}}>
-                    dr hab. inż. Krzysztof Mendrok, prof. AGH
+                    dr hab. inż. Krzysztof Mendrok, prof. AGH  <CancelIcon style={{ color: red[500] }}/>
                     </MDBCardText>
                     <Divider />
                     <MDBCardText style={{fontWeight: "bold", marginTop:"1rem"}}>
@@ -62,7 +64,7 @@ const MultiCarouselPage = () => {
                   <MDBCardBody>
                     <MDBCardTitle style={{fontSize: "17px"}}>Prodziekan ds. Nauki</MDBCardTitle>
                     <MDBCardText style={{fontSize: "13px"}}>
-                    dr hab. inż. Grzegorz Cieplok, prof. AGH
+                    dr hab. inż. Grzegorz Cieplok, prof. AGH  <CancelIcon style={{ color: red[500] }}/>
                     </MDBCardText>
                     <Divider />
                     <MDBCardText style={{fontWeight: "bold", marginTop:"1rem"}}> 
@@ -94,7 +96,7 @@ const MultiCarouselPage = () => {
                   <MDBCardBody>
                     <MDBCardTitle style={{fontSize: "17px"}}>Prodziekan ds. Kształcenia</MDBCardTitle>
                     <MDBCardText style={{fontSize: "13px"}}>
-                    dr hab. inż. Waldemar Rączka, prof. AGH
+                    dr hab. inż. Waldemar Rączka, prof. AGH  <CheckCircleIcon style={{ color: green[500] }}/>
                     </MDBCardText>
                     <Divider />
                     <MDBCardText style={{fontWeight: "bold", marginTop:"1rem"}}>
@@ -126,7 +128,7 @@ const MultiCarouselPage = () => {
                   <MDBCardBody>
                     <MDBCardTitle style={{fontSize: "17px"}}>Prodziekan ds. Studenckich</MDBCardTitle>
                     <MDBCardText style={{fontSize: "13px"}}>
-                    dr inż. Krzysztof Zagórski
+                    dr inż. Krzysztof Zagórski  <CheckCircleIcon style={{ color: green[500] }}/>
                     </MDBCardText>
                     <Divider />
                     <MDBCardText style={{fontWeight: "bold", marginTop:"1rem"}}>
@@ -158,7 +160,7 @@ const MultiCarouselPage = () => {
                   <MDBCardBody>
                     <MDBCardTitle style={{fontSize: "17px"}}>Prodziekan ds. Ogólnych</MDBCardTitle>
                     <MDBCardText style={{fontSize: "13px"}}>
-                    dr hab. inż. Krzysztof Kołodziejczyk, prof. AGH
+                    dr hab. inż. Krzysztof Kołodziejczyk, prof. AGH  <CheckCircleIcon style={{ color: green[500] }}/>
                     </MDBCardText>
                     <Divider />
                     <MDBCardText style={{fontWeight: "bold", marginTop:"1rem"}}>
@@ -190,7 +192,7 @@ const MultiCarouselPage = () => {
                   <MDBCardBody>
                     <MDBCardTitle style={{fontSize: "17px"}}>Prodziekan ds. Współpracy i Projektów</MDBCardTitle >
                     <MDBCardText style={{fontSize: "13px"}}>
-                    dr hab. inż. Marcin Kot, prof. AGH
+                    dr hab. inż. Marcin Kot, prof. AGH  <CancelIcon style={{ color: red[500] }}/>
                     </MDBCardText>
                     <Divider />
                     <MDBCardText style={{fontWeight: "bold", marginTop:"1rem"}}>

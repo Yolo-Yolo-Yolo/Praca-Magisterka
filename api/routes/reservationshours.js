@@ -94,4 +94,26 @@ router
   .catch(err => res.status(404).json({ success: false }));
 });
 
+router
+.post("/confirm/:id/:id2", (req, res) => {
+  ReservationHours.findOneAndUpdate(
+    { 
+      // convert id to object id if not using (mongoose.Types.ObjectId(req.params.id))
+      Code: req.params.id, 
+      godziny: {
+          $elemMatch: {
+              id: req.params.id2,
+              isConfirmed: false
+          }
+      }
+    },
+    // use positional operator $ to update in specific object
+    { $set: { "godziny.$.isConfirmed": true } }
+  )
+  .then(ReservationHours =>
+      ReservationHours.save().then(() => res.json({ success: true }))
+  )
+  .catch(err => res.status(404).json({ success: false }));
+});
+
 module.exports = router;

@@ -15,6 +15,7 @@ router.post("/new", auth, (req, res) => {
         opis: req.body.opis,
         potwierdzona: req.body.potwierdzona,
         date: req.body.date,
+        dateUS: req.body.dateUS,
         user: req.body.user,
         album: req.body.album
     });
@@ -45,6 +46,13 @@ router.get("/find/:id_terminu", (req, res) => {
     {id_terminu : req.params.id_terminu}
   )
 .then(items => res.json(items));
+});
+router
+.post("/confirm/:id", (req, res) => {
+  Reservation.findByIdAndUpdate(req.params.id, { potwierdzona: true }, { useFindAndModify: false }).then(Reservation =>
+    Reservation.save().then(() => res.json({ success: true }))
+  )
+  .catch(err => res.status(404).json({ success: false }));
 });
 
 module.exports = router;

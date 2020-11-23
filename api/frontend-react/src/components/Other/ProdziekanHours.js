@@ -45,7 +45,8 @@ class ProdziekanHours extends Component {
     //const godziny3 = Object.assign(...reservationhours.map(d => ({[d[0]]: d[1]})));
     const hours = reservationhours.flatMap(({ godziny }) => godziny)
     console.log(hours);
-
+    const hours2 = hours.filter(hours => (new Date(hours.hourUS)) > (new Date() - 24*60*60000));
+    console.log(hours2);
     const tableIcons = {
         Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
         Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
@@ -93,7 +94,7 @@ class ProdziekanHours extends Component {
             type: 'boolean'
         },
       ]}
-      data={hours}
+      data={hours2}
       options={{
         actionsColumnIndex: -1
       }}

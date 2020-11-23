@@ -4,7 +4,8 @@ import {
     GET_MY_RESERVATIONS,
     ADD_RESERVATION,
     DELETE_RESERVATION,
-    RESERVATIONS_LOADING
+    RESERVATIONS_LOADING,
+    UPDATE_RESERVATION
 } from "./types";
 import { tokenConfig } from "./authActions";
 import { returnErrors } from "./errorActions";
@@ -81,4 +82,16 @@ export const getReservations = () => (dispatch, getState) => {
     return {
       type: RESERVATIONS_LOADING
     };
+  };
+
+  export const ConfirmReservation = id => (dispatch, getState) => {
+    axios.post(`/reservations/confirm/${id}`, tokenConfig(getState)).then(res =>
+      dispatch({
+        type: UPDATE_RESERVATION,
+        payload: id
+      })
+    )
+    .catch(err =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
   };

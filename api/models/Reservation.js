@@ -15,6 +15,10 @@ const ReservationSchema = new Schema({
     type: String,
     required: true
   },
+  dateUS: {
+    type: String,
+    required: true
+  },
   do_kogo: {
     type: String,
     required: true 

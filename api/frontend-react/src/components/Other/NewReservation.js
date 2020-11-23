@@ -47,6 +47,7 @@ class NewReservation extends Component {
     nazwisko:"",
     telefon: 1,
     date: "",
+    dateUS: "",
     do_kogo: "",
     temat: "",
     opis: "",
@@ -87,6 +88,7 @@ class NewReservation extends Component {
         onBookClick = rowData => {
           this.setState({
             id_terminu: rowData.id,
+            dateUS: rowData.hourUS,
             date: rowData.hour,
             id_przyjec: rowData.Code,
             });
@@ -113,13 +115,14 @@ class NewReservation extends Component {
             opis: this.state.opis,
             potwierdzona: this.state.potwierdzona,
             date: this.state.date,
+            dateUS: this.state.dateUS,
             user: this.state.user,
             album: this.state.album,
           };
       
           //Add Reservation via addReservation action
-          this.props.updateReservationHours(this.state.id_przyjec,this.state.id_terminu);
           this.props.addReservation(newReservation);
+          this.props.updateReservationHours(this.state.id_przyjec,this.state.id_terminu);
           // Close Modal
           this.toggle();
           this.reload();        

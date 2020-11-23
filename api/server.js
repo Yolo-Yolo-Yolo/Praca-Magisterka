@@ -3,6 +3,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const config = require('config');
+//Loading path
+const path = require('path');
 //Loading routes
 const information = require('./routes/information');
 const users = require('./routes/users');
@@ -12,8 +14,6 @@ const reservations = require('./routes/reservations');
 //Loading app
 const app = express();
 const port = process.env.PORT || 5000;
-//Loading path
-const path = require('path');
 //Loading Express and body Parser
 app.use(express.json());
 app.use(bodyParser.json());
@@ -33,7 +33,7 @@ app.use('/reservationshours', reservationshours);
 app.use('/reservations', reservations);
 // Serve static assets in production HEROKU UPLOAD
 if(process.env.NODE_ENV === 'production') {
-  //Set static folder
+  //Set static folder for Deployment!!
   app.use(express.static('frontend-react/build'));
 
   app.get ('*', (req, res) => {
