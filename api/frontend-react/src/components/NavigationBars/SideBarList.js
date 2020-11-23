@@ -15,6 +15,7 @@ import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import LiveHelpRoundedIcon from '@material-ui/icons/LiveHelpRounded';
 import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
+import ChangePassword from '../Modals/ChangePassword';
 
 
 class SideBarList extends Component {
@@ -56,6 +57,7 @@ class SideBarList extends Component {
                 <ListItemIcon><HomeRoundedIcon /></ListItemIcon>
                 <ListItemText primary="Panel Główny" />
                 </ListItem>
+                <ChangePassword />
                 <ListItem button component="a" href="/faq">
                 <ListItemIcon><LiveHelpRoundedIcon /></ListItemIcon>
                 <ListItemText primary="FAQ" />
@@ -94,6 +96,7 @@ class SideBarList extends Component {
                     <ListItemIcon><HomeRoundedIcon /></ListItemIcon>
                     <ListItemText primary="Panel Główny" />
                     </ListItem>
+                    <ChangePassword />
                     <ListItem button component="a" href="/faq">
                     <ListItemIcon><LiveHelpRoundedIcon /></ListItemIcon>
                     <ListItemText primary="FAQ" />
@@ -132,6 +135,7 @@ class SideBarList extends Component {
                     <ListItemIcon><HomeRoundedIcon /></ListItemIcon>
                     <ListItemText primary="Panel Główny" />
                     </ListItem>
+                    <ChangePassword />
                     <ListItem button component="a" href="/faq">
                     <ListItemIcon><LiveHelpRoundedIcon /></ListItemIcon>
                     <ListItemText primary="FAQ" />

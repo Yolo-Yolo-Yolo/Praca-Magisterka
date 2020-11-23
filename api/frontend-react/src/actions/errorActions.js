@@ -8,6 +8,7 @@ export const returnErrors = (msg, status, id = null) => {
   };
 };
 
+
 //Clear errors
 export const clearErrors = () => {
   return {

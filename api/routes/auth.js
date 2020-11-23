@@ -64,4 +64,35 @@ router.get('/', auth, (req, res) => {
     .then(user => res.json(user));
 })
 
+
+router.post("/changepassword", (req, res) => {
+  const { id, oldpassword, newpassword } = req.body
+  if (!oldpassword || !newpassword) {
+    return res.status(400).json({ msg: "Uzupełnij wszystkie pola" });
+  }
+  // find if old password is valid
+  User.findOne({ _id: id })
+    .then(user => {
+      bcrypt.compare(oldpassword, user.password)
+      .then(isMatch => {
+        if(!isMatch) return res.status(400).json({ msg: 'Niepoprawne stare hasło'});
+        bcrypt.genSalt(10, function(err, salt) {
+          if (err) return
+          bcrypt.hash(newpassword, salt, function(err, hash) {
+            if (err) return
+            User.findOneAndUpdate({ _id: id }, { password: hash })
+              .then(() => res.status(200).json({ msg2: "Pomyślnie zmieniono hasło!" }))
+              .catch(err => res.status(500).json(err))
+          })
+        })
+      })
+    })
+    // highlight-end
+    .catch(() => {
+      res.status(404).json("Niepoprawny użytkownik")
+    })
+
+});
+
+
 module.exports = router;

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { returnErrors } from "./errorActions";
+import { returnSuccess } from "./successActions";
 
 import {
   USER_LOADED,
@@ -9,7 +10,9 @@ import {
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
-  REGISTER_FAIL
+  REGISTER_FAIL,
+  CHANGE_PASSWORD_SUCCESS,
+  CHANGE_PASSWORD_FAIL
 } from "./types";
 
 //Check token & load user
@@ -106,6 +109,43 @@ export const login = ({
       );
       dispatch({
         type: LOGIN_FAIL
+      });
+    });
+};
+
+
+export const changepassword = ({
+  id,
+  oldpassword,
+  newpassword
+}) => dispatch => {
+  //Headers
+  const config = {
+    headers: {
+      "Content-type": "application/json"
+    }
+  };
+  //Request body
+  const body = JSON.stringify({
+    id,
+    oldpassword,
+    newpassword
+  });
+
+  axios
+    .post("/auth/changepassword", body, config)
+    .then(res =>
+      dispatch(returnSuccess(res.data, res.status, "CHANGE_PASSWORD_SUCCESS"),
+      dispatch({
+        type: CHANGE_PASSWORD_SUCCESS
+      }))
+    )
+    .catch(err => {
+      dispatch(
+        returnErrors(err.response.data, err.response.status, "CHANGE_PASSWORD_FAIL")
+      );
+      dispatch({
+        type: CHANGE_PASSWORD_FAIL
       });
     });
 };
