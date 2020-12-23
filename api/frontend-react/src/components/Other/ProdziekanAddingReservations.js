@@ -19,6 +19,10 @@ import pl from "date-fns/locale/pl";
 import moment from 'moment-timezone';
 import { nanoid } from 'nanoid'
 import { Input } from "reactstrap";
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import LinkIcon from '@material-ui/icons/Link';
+import HourglassFullIcon from '@material-ui/icons/HourglassFull';
 
 moment.tz('Europe/Warsaw');
 registerLocale("pl", pl);
@@ -31,6 +35,7 @@ class ProdziekanAddingReservations extends Component {
           do_kogo: "",
           godziny: [],
           Code: "",
+          zgoda: false,
           TemporaryDate: setHours(setMinutes(new Date(), 0), 0),
           hours: { id : "", hour : "", isBooked : false, isConfirmed: false, Code: ""},
           Startdate: setHours(setMinutes(new Date(), 0), 0),
@@ -77,6 +82,12 @@ class ProdziekanAddingReservations extends Component {
       }
       onChange = e => {
         this.setState({ [e.target.name]: e.target.value });
+      };
+      
+      CheckboxChange = () => {
+        this.setState({
+          zgoda: !this.state.zgoda
+        });
       };
 
       onSubmit = e => {
@@ -158,7 +169,7 @@ class ProdziekanAddingReservations extends Component {
                 </ListItem>
                 <Divider />
                 <ListItem>
-                <ListItemIcon><SnoozeIcon /></ListItemIcon>
+                <ListItemIcon><HourglassFullIcon /></ListItemIcon>
                 <ListItemText primary="Co ile minut wejście: "  secondary={<Input
                   type="number"
                   name="minut"
@@ -167,6 +178,24 @@ class ProdziekanAddingReservations extends Component {
                   onChange={this.onChange}
                 ></Input>} />
                 </ListItem>
+                <FormControlLabel
+                  value="end"
+                  control={<Checkbox color="primary" onClick={this.CheckboxChange} />}
+                  label="Czy dyżur będzie zdalny ?"
+                  labelPlacement="end"
+                />
+                {this.state.zgoda ? (
+                <ListItem>
+                <ListItemIcon><LinkIcon /></ListItemIcon><ListItemText primary="Link do spotkania: "  secondary={<Input
+                  type="text"
+                  name="link"
+                  id="link"
+                  placeholder="http://www.linkdospotkania.pl"
+                  onChange={this.onChange}
+                ></Input>} />
+                </ListItem>
+              
+            ) : null}
                 
                 
                 <ListItemText primary="" secondary={<Button color="primary" onClick={this.onSubmit} variant="contained" style={{ marginLeft: "2rem" }} block="true">
